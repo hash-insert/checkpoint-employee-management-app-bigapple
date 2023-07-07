@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import empRoute from "./Routes/employee.js"
-
+import adminroute from "./Routes/admin.js"
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT
@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use("/",empRoute)
-
+app.use("/",adminroute)
 app.listen(PORT,()=>{
     console.log(`Server started sucessfully in the ${PORT}`)
     mongoose.connect(MONGO).then(()=>{

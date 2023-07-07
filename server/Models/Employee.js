@@ -50,9 +50,9 @@ const employeeSchema = mongoose.Schema({
                 },
                 LeaveStatus:{
                     type: String,
-                    requried: true
+                    default:"pending"
                 }
-            }
+            },{ timestamps: true }
         ]
     },
     noOfLeaves:{
@@ -61,7 +61,6 @@ const employeeSchema = mongoose.Schema({
     },
     profileImage:{
         type: Buffer,
-        requried: true
     },
     timeSheets:{
         type:[
@@ -87,7 +86,7 @@ const employeeSchema = mongoose.Schema({
                     required: true
                 }
 
-            }
+            },{ timestamps: true }
         ]
     }
 })
