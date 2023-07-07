@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use("/",empRoute)
+app.use("/admin/teams",teamsRoute)
 
 app.listen(PORT,()=>{
     console.log(`Server started sucessfully in the ${PORT}`)

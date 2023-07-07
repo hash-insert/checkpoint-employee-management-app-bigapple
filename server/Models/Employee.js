@@ -57,11 +57,11 @@ const employeeSchema = mongoose.Schema({
     },
     noOfLeaves:{
         type: Number,
-        required: true,
+        required: true
     },
     profileImage:{
         type: Buffer,
-        requried: true
+        required : true,
     },
     timeSheets:{
         type:[
