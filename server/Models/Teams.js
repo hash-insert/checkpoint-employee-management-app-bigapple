@@ -26,7 +26,6 @@ const TeamsSchema = new mongoose.Schema({
 
         }
     ]
-
 })
 
 

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import empRoute from "./Routes/employee.js"
-
+import teamsRoute from "./Routes/Teams.js"
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT
