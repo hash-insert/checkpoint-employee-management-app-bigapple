@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
-const adminSchema = mongoose.Schema({
-    adminName: {
+const userSchema = mongoose.Schema({
+    userName: {
         type: String,
         required: true
+    },
+    role : {
+        type : String,
+        required : true
     },
     designation:{
         type: String,
@@ -24,7 +28,14 @@ const adminSchema = mongoose.Schema({
     phone: {
         type: String,
         required: false
+    },
+    profileImg: {
+        type : Buffer
+    },
+    noOfLeaves : {
+        type : Number,
+        default : 0
     }
 });
-const AdminModel = mongoose.model('Admin', adminSchema);
-export default AdminModel;
+const UserModel = mongoose.model('User', userSchema);
+export default UserModel;
