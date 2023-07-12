@@ -85,3 +85,4 @@ export const updateUserData = async(req,res)=>{
         res.json("Error occured while updating the data", err)
     }
 }
+
