@@ -19,7 +19,7 @@ const TeamsSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            empName:{
+            userName:{
                 type: String,
                 required: true
             }

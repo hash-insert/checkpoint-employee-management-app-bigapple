@@ -8,7 +8,6 @@ export const getAllTeams = async(req,res) =>{
         console.log(`here is the error:${error}`)
     }
 }
-
 export const postTeam = async(req,res) =>{
     try{
         const newTeam = new TeamSchema(req.body);
