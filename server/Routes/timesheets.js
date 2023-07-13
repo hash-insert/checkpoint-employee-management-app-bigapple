@@ -1,15 +1,17 @@
-const express=require('express');
-const {getTimesheets,addTimesheets,getallTimesheets,updatebyemployee}=require('../controllers/timesheets.js');
+// const express=require('express');
+import express from "express";
+import { getTimesheets,addTimesheets,getallTimesheets,updatebyemployee } from "../controllers/timesheets.js";
+// const {getTimesheets,addTimesheets,getallTimesheets,updatebyemployee}=require('../controllers/timesheets.js');
 
 const app=express();
 const route=express.Router()
 
-route.get('/timesheet/:id',getTimesheets);
+route.get('/:id',getTimesheets);
 
-route.get('/timesheet',getallTimesheets)
+route.get('/',getallTimesheets)
 
-route.post('/timesheet',addTimesheets);
+route.post('/',addTimesheets);
 
-route.patch('/timesheet/employee/:id',updatebyemployee);
+route.patch('/employee/:id',updatebyemployee);
 
-module.exports=route;
+export default route;

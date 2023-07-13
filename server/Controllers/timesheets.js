@@ -1,5 +1,3 @@
-// const mongoose=require('mongoose');
-import mongoose from "mongoose";
 import timeSheetSchema from "../models/timeshee.js";
 // const timesheet=require('../models/timesheet');
 

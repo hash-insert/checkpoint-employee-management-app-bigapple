@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import empRoute from "./Routes/employee.js"
 import teamsRoute from "./Routes/Teams.js"
+import timesheetRoute from "./Routes/timesheets.js"
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT
@@ -14,6 +15,7 @@ app.use(cors())
 
 app.use("/",empRoute)
 app.use("/admin/teams",teamsRoute)
+app.use("/timesheet",timesheetRoute)
 
 app.listen(PORT,()=>{
     console.log(`Server started sucessfully in the ${PORT}`)
