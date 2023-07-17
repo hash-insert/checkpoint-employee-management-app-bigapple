@@ -1,0 +1,47 @@
+#timer{
+    color: green;
+    font-weight: 900;
+    font-size: 20px;
+}
+.namebox{
+ width: 25%;
+    border: 3px solid purple;
+    display: flex;
+    flex-direction: column;
+   
+   
+}
+.section-1{
+    display: flex;
+    text-align: center;
+}
+
+.section-2{
+    display: flex;
+    text-align: center;
+}
+.timesheet{
+    width: 50%;
+    height: 50vh;
+    box-sizing: border-box;
+    border: 3px solid purple;
+}
+
+.team{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    align-self: center;
+    background-color: #FFC95F;
+}
+.schedule{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    align-self: center;
+    background-color: #FFC95F;
+}
+.pic{
+    width: 100%;
+    height: 100%;
+}

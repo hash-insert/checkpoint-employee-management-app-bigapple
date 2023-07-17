@@ -1,0 +1,117 @@
+.heading {
+  /* background-image: linear-gradient(purple,white);  */
+  color: purple;
+  font-weight: bold;
+}
+/* .div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 1050px;
+
+  width: 50vw;
+  height: 50vw;
+  background: linear-gradient(
+    -45deg,
+    blue,
+    rgb(51, 255, 0) 49%,
+    white 49%,
+    white 51%,
+    red 51%
+  );
+  border-radius: 50%;
+}
+
+.see {
+  border-radius: 50px;
+
+  border-right-color: red;
+  border-top-color: blue;
+  border-bottom-color: red;
+  border-left-color: blue;
+  border-width: 50px;
+  border-style: solid;
+  height: 0px;
+  width: 0px;
+}
+
+.circle {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: rotate(25deg);
+}
+.circle:after,
+.circle:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 50%;
+}
+.circle:after {
+  background: #02fbfd;
+  left: -2px;
+}
+.circle:before {
+  background: #fe0103;
+  right: -2px;
+} */
+
+
+
+.container{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.form-container {
+  display: flex;
+flex-direction: column;
+padding:20px;
+justify-content: center;
+align-items: center;
+
+width: 50%;
+  box-shadow:5px 0 5px  black;
+}
+
+.box{
+  display: flex;
+}
+
+ .gif {
+  width: 50%;
+  height: 50%;
+
+} 
+
+.input-area{
+  width: 200px;
+  border:10px solid white;
+}
+.btn{
+  color: white;
+  font-weight: 500;
+ background-color: purple;
+ width: 150px;
+ height: 30px;
+ margin-top: 10px;
+ margin-left: 20px;
+
+
+  border-radius: 20px;
+}
+body{
+  background-color: hsl(0,0%,90%)
+}
