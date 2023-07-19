@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+.box-container{
+    /* margin-top: 5%; */
+    width: 90%;
+    height: 80vh;
+    /* box-shadow:rgba(50, 50, 93, 0.25) 0px 0px 15px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 20px; */
+    display: flex;
+    justify-content: space-between;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: fit-content;
+}
+
+.heading-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50%;
+}
+.svg-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+}
+.content,.empHeading{
+    text-align: left;
+    margin-right: 2.5%;
+}
+.empHeading{
+    background: -webkit-linear-gradient(45deg,#b711f9, #ea6adf);
+    font-family: 'Jost', sans-serif;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  /* -webkit-text-stroke: 0.3px black; */
+}
+.employeeSvg{
+    height: 50vh;
+}
+.carousel-image{
+    height: 50vh;
+    width: 40vw;
+    filter: brightness(0.7);
+}
+.carousel-image::after{
+    background-color: rgb(107, 104, 104);
+    z-index: 10;
+}
