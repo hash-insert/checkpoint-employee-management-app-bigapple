@@ -4,7 +4,7 @@ import firstImage from "../images/download.jpeg";
 
 const Corousel = () => {
   return (
-    <Carousel style={{ width: "40vw" }}>
+    <Carousel style={{ width: "70vw", backgroundColor:"whitesmoke" }}>
       <Carousel.Item interval={3000}>
         <img className="carousel-image" src={firstImage} />
         <Carousel.Caption>
