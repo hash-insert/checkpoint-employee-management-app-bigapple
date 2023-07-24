@@ -2,14 +2,12 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { auth } from "./firebase";
-import img1 from "./images/undraw.svg"
-import img2 from "./images/icon1.png"
+
 import "./login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   const [authUser, setAuthUser] = useState(null);
 
@@ -43,28 +41,38 @@ function Login() {
   };
 
   return (
-    <div className="main">
-    <div className="svgs-box">
-<img src={img1} alt="image"  className="admin"/>
-<img src={img2} alt="image"  className="emp"/>
-    </div>
+    <>
    
-      <form className="login-page">
-        <h1>Login</h1>
-
-        <label>Email</label>
-        <input type="email" onChange={handleEmail} placeholder="enter email" />
-        <label>Password</label>
-        <input
-          type="password"
-          onChange={handlePassword}
-          placeholder="password"
-        />
+      <div className="main">
        
-      
-        <button onClick={handleBtn}>Login </button>
-      </form>
-    </div>
+     
+        <form className="card">
+          <h1 className="card-header"> Login</h1>
+
+          <div className="input-icons">
+         
+              <i className="fas fa-user icon"></i>
+           
+            <input type="email" onChange={handleEmail} placeholder="Email" />
+          </div>
+          <div className="input-icons">
+          
+              <i className="fas fa-key icon"></i>
+           
+            <input
+              type="password"
+              onChange={handlePassword}
+              placeholder="Password"
+            />
+          </div>
+          <button className="btn" onClick={handleBtn}>
+            Login
+          </button>
+        </form>
+       
+      </div>
+      <h3>Couldn't login? Contact <a>Admin</a></h3>
+    </>
   );
 }
 export default Login;
