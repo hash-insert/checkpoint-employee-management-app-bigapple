@@ -2,11 +2,14 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { auth } from "./firebase";
+import img1 from "./images/undraw.svg"
+import img2 from "./images/icon1.png"
 import "./login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   const [authUser, setAuthUser] = useState(null);
 
@@ -40,8 +43,12 @@ function Login() {
   };
 
   return (
-    <div>
-      <img src="https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" />
+    <div className="main">
+    <div className="svgs-box">
+<img src={img1} alt="image"  className="admin"/>
+<img src={img2} alt="image"  className="emp"/>
+    </div>
+   
       <form className="login-page">
         <h1>Login</h1>
 
@@ -53,6 +60,8 @@ function Login() {
           onChange={handlePassword}
           placeholder="password"
         />
+       
+      
         <button onClick={handleBtn}>Login </button>
       </form>
     </div>

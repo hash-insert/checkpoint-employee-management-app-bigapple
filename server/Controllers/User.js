@@ -1,9 +1,22 @@
 import User from "../Models/User.js";
+import admin from "firebase-admin";
 import bcrypt from "bcrypt";
 import { auth } from "../firebase/firebase.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+// import { serviceAccount } from "../firebase-admin.js";
+//Initialize the Firebase Admin SDK (Make sure you have the necessary credentials set up)
+const serviceAccount=require("../firebase-admin.json")
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 export const addUser = async (req, res) => {
   try {
     const {
@@ -24,9 +37,12 @@ export const addUser = async (req, res) => {
         email,
         password
       );
-      console.log(userCredential);
+
+      await admin.auth().setCustomUserClaims(userCredential.user.uid, { role });
     } catch (error) {
       console.log(error);
+      res.status(500).json("Error creating user in Firebase Authentication");
+      return;
     }
 
     let saltRounds = 5;
@@ -103,21 +119,22 @@ export const updateUserData = async (req, res) => {
 export const loginUser = async (req, res) => {
 
   try {
-    const{email,password}=req.body;
-  let user=signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
-    console.log(userCredential);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-  if(!user){
-    res.json("user not found")
-  }else{
-    res.json("user is logged in")
-  }
-    
-  } catch (error) {
-    res.json("Error occured while updating the data"+ err)
-  }
+    const { email, password } = req.body;
+    // Authenticate the user using Firebase Authentication
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
   
+    const user = userCredential.user;
+    const accessToken=user.accessToken
+
+    // const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
+
+   
+    res.json({ success: true,accessToken});
+  } catch (error) {
+    res.json({ success: false, message: "Error occurred while logging in" });
+  }
 };
