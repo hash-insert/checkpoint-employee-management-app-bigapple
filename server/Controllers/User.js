@@ -1,5 +1,8 @@
 import User from "../Models/User.js";
 import bcrypt from "bcrypt";
+import { auth } from "../firebase/firebase.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 export const addUser = async (req, res) => {
   try {
@@ -15,6 +18,17 @@ export const addUser = async (req, res) => {
       profileImg,
       noOfLeaves,
     } = req.body;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(userCredential);
+    } catch (error) {
+      console.log(error);
+    }
+
     let saltRounds = 5;
     let salt = await bcrypt.genSalt(saltRounds);
     let hashedPassword = await bcrypt.hash(password, salt);
@@ -40,7 +54,7 @@ export const addUser = async (req, res) => {
       res.status(200).json("Saved Successfully");
     }
   } catch (err) {
-    res.send("Error occured while saving the data", err);
+    res.send("Error occured while saving the data" + err);
   }
 };
 
@@ -73,16 +87,37 @@ export const deleteUserById = async (req, res) => {
   }
 };
 
-export const updateUserData = async(req,res)=>{
-    try{
-        const userId = req.params.userId
-        const obj = req.body;
-        const result = await User.updateOne({ userId: userId }, obj);
-        if(result.modifiedCount==1){
-            res.status(200).json("Updated Sucessfully")
-        }
-    }catch(err){
-        res.json("Error occured while updating the data", err)
+export const updateUserData = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const obj = req.body;
+    const result = await User.updateOne({ userId: userId }, obj);
+    if (result.modifiedCount == 1) {
+      res.status(200).json("Updated Sucessfully");
     }
-}
+  } catch (err) {
+    res.json("Error occured while updating the data", err);
+  }
+};
 
+export const loginUser = async (req, res) => {
+
+  try {
+    const{email,password}=req.body;
+  let user=signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
+    console.log(userCredential);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+  if(!user){
+    res.json("user not found")
+  }else{
+    res.json("user is logged in")
+  }
+    
+  } catch (error) {
+    res.json("Error occured while updating the data"+ err)
+  }
+  
+};

@@ -15,6 +15,10 @@ app.use(cors())
 app.use("/",userRoute)
 app.use("/admin/teams",teamsRoute)
 
+app.get("/",(req,res)=> {
+    res.send("welcome to login")
+})
+
 app.listen(PORT,()=>{
     console.log(`Server started sucessfully in the ${PORT}`)
     mongoose.connect(MONGO).then(()=>{
