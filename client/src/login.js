@@ -42,23 +42,18 @@ function Login() {
 
   return (
     <>
-   
       <div className="main">
-       
-     
         <form className="card">
           <h1 className="card-header"> Login</h1>
 
           <div className="input-icons">
-         
-              <i className="fas fa-user icon"></i>
-           
+            <i className="fas fa-user icon"></i>
+
             <input type="email" onChange={handleEmail} placeholder="Email" />
           </div>
           <div className="input-icons">
-          
-              <i className="fas fa-key icon"></i>
-           
+            <i className="fas fa-key icon"></i>
+
             <input
               type="password"
               onChange={handlePassword}
@@ -69,9 +64,10 @@ function Login() {
             Login
           </button>
         </form>
-       
       </div>
-      <h3>Couldn't login? Contact <a>Admin</a></h3>
+      <h3>
+        Couldn't login? Contact <a>Admin</a>
+      </h3>
     </>
   );
 }
