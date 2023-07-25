@@ -1,0 +1,114 @@
+/* 
+.leave{
+  height:100vh;
+  width:100vw
+}
+.leave-card {
+  background-color: #fff;
+  border-radius: 8%;
+  box-shadow: 0 4px 4px #c9a8f1;
+  padding: 2%;
+  width: 30%;
+  margin: 5% auto; 
+}
+
+.leave-card h2 {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  margin-bottom: 8%;
+  font-weight: bold;
+}
+
+.input-container input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.apply-button {
+  background-color:	#9d72b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 1% 1.6%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.apply-button:hover {
+  background-color:	#5a2675;
+}
+ */
+/* leaveEmp.css */
+.leave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;
+  width: 100vw; */
+}
+
+.leave-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px #c9a8f1;
+  padding: 2%;
+  width: 30%;
+  margin-top: 5%; /* Add some space above the card */
+}
+
+.leave-card h2 {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  margin-bottom: 4%;
+  font-weight: bold;
+}
+
+.input-container input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 16px;
+  
+}
+
+.apply-button {
+  background-color: #9d72b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 1% 1.6%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.apply-button:hover {
+  background-color: #5a2675;
+}
+.input-container input:hover{
+  box-shadow: 0 4px 4px #c9a8f1;
+}
+.input-container input:focus {
+  outline: none; 
+  border-color: transparent; 
+  box-shadow: 0 4px 4px #c9a8f1;
+}
