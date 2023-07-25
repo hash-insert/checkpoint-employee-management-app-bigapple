@@ -1,47 +1,49 @@
 import { useEffect, useState } from "react";
-import {auth} from "../Firebase/firebase.jsx"
+import { auth } from "../Firebase/firebase.jsx";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
-
-
-
-
 function UserCheck() {
-const [authUser,setAuthUser]=useState(null);
+  const [authUser, setAuthUser] = useState(null);
 
+  useEffect(() => {
+    const check = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
 
-    useEffect(()=>{
+    return () => {
+      check();
+    };
+  }, []);
+  const userLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("signout success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-const check=onAuthStateChanged(auth,(user)=>{
-    if(user){
-        setAuthUser(user)
-    }else{
-        setAuthUser(null)
-    }
-})
+  const users = authUser;
 
-return ()=>{
-    check();
-}
-
-    },[])
-    const userLogOut=()=> {
-        signOut(auth).then(()=> {
-            console.log("signout success")
-        }).catch((err)=> {
-            console.log(err)
-        })
-    }
-
-    const users=authUser;
-
-
-    return ( <>
-    
-    <div>{authUser ?<><p>{authUser.email}</p><button onClick={userLogOut}>Logout</button></> : <p>SignOut</p>}</div>
-    
-    
-    </> );
+  return (
+    <>
+      <div>
+        {authUser ? (
+          <>
+            <p>{authUser.email}</p>
+            <button onClick={userLogOut}>Logout</button>
+          </>
+        ) : (
+          <p>SignOut</p>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default UserCheck;
