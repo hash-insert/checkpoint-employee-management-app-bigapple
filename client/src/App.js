@@ -6,11 +6,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Routes>
+        <Routes>
+        <Route path="/admin/leave" element={    <LeavePageAdmin/>} />   
           <Route path="/employee/leave" element={   < LeavePageEmp />} />    
           </Routes>
       </Router>
-      <LeavePageAdmin/>
     </div>
   );
 }
