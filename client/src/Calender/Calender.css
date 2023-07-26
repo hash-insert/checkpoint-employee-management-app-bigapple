@@ -1,0 +1,16 @@
+.fc .fc-col-header-cell-cushion {
+    display: inline-block;
+    color: #5a2675;
+  }
+.fc .fc-daygrid-day-number{
+    color: #bba8ff;
+}
+.fc .fc-toolbar-title{
+    color: #5a2675;
+}
+.fc .fc-button{
+    background-color: #5a2675 !important;
+}
+.fc .fc-daygrid{
+    color: #5a2675;
+}

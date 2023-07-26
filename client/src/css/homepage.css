@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box-container{
+    width: 100vw;
+    height: auto;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 97.5vw;
+    height: fit-content;
+}
+
+.heading-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50%;
+}
+.svg-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    text-align: justify;
+
+}
+.empHeading{
+    text-align: left;
+    background: -webkit-linear-gradient(45deg,#b711f9,purple);
+    font-family: 'Jost', sans-serif;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+.employeeSvg{
+    height: 50vh;
+}
+.carousel{
+    width: 97vw;
+    height: auto;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+
+}
+.carousel-image{
+    height: 50vh;
+    width: 40vw;
+    filter: brightness(0.7);
+}
+.carousel-image::after{
+    background-color: rgb(107, 104, 104);
+    z-index: 10;
+}
+.nav123{
+    display: flex;
+}
+.nav123>*{
+    color: #5a2675;
+    padding: 10px;
+    margin: 0.5%;
+    border-radius: 15px;
+}
+.nav123>*:hover{
+    transition: 0.5s ease;
+    box-shadow: #bba8ff 0px 5px 10px;
+}
+.NavBar{
+    display: flex;
+    justify-content: space-between;
+    width: 97vw ;
+    padding: 1%;
+}
+.footer{
+    width: 100vw;
+    height: auto;
+    background-color: #9D72B3;
+}
+.SocialLinks{
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+.SocialLinks>*{
+    color: white;
+    width:30px;
+    height:30px;
+    margin: 0.7%;
+    cursor: pointer;
+}
+::-webkit-scrollbar-track{
+    color: #b711f9;
+    background-color: aqua;
+}
+.active{
+    text-decoration-line: underline;
+    font-size: 1.1em;
+    font-weight: bolder;
+    text-decoration-thickness: 3px;
+}
+a{
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bolder
+}
