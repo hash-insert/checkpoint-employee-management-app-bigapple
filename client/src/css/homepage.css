@@ -1,24 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
-.box-container{
-    /* margin-top: 5%; */
-    width: 100vw;
-    height: auto;
-    /* margin: 2%; */
-    padding: 2%;
-    /* box-shadow:rgba(50, 50, 93, 0.25) 0px 0px 15px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border-radius: 20px; */
-    display: flex;
-    justify-content: space-between;
-}
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+.box-container{
+    width: 100vw;
+    height: auto;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
 }
 .main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: 97.5vw;
     height: fit-content;
 }
 
@@ -30,7 +27,6 @@
     width: 50%;
 }
 .svg-container{
-    
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -48,8 +44,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
-  width: 50vh;
-  /* -webkit-text-stroke: 0.3px black; */
 }
 .employeeSvg{
     height: 50vh;
@@ -57,7 +51,6 @@
 .carousel{
     width: 97vw;
     height: auto;
-    /* margin: 2%; */
     padding: 2%;
     display: flex;
     flex-direction: column;
@@ -97,7 +90,9 @@
     background-color: #9D72B3;
 }
 .SocialLinks{
-    margin: 2%;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
 }
 .SocialLinks>*{
     color: white;
@@ -109,4 +104,15 @@
 ::-webkit-scrollbar-track{
     color: #b711f9;
     background-color: aqua;
+}
+.active{
+    text-decoration-line: underline;
+    font-size: 1.1em;
+    font-weight: bolder;
+    text-decoration-thickness: 3px;
+}
+a{
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bolder
 }

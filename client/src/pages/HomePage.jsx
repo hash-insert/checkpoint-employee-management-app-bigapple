@@ -5,11 +5,13 @@ import working from "../svgs/working.svg"
 import {FaSquareTwitter,FaSquareGithub} from "react-icons/fa6";
 import {BsLinkedin} from "react-icons/bs";
 import {AiFillInstagram} from 'react-icons/ai'
-// import employeeSvg from "../svgs/employee.svg";
-// import workTime from "../svgs/workTime.svg"
-// import remotely from "../svgs/remotely.svg"
+import { AppContext } from "../AppProvider/Appprovider";
 
 export const HomePage = () => {
+  const { homePage, setHomePage, loginpage, setLoginPage, contact, setContact } = React.useContext(AppContext);
+  setHomePage(true);
+  setLoginPage(false);
+  setContact(false);
   return (
     <div className="main">
       <section className="box-container">
