@@ -5,6 +5,7 @@ import './App.css';
 import { HomePage } from './pages/HomePage';
 import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
+import Login from "./pages/login.jsx"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<HomePage />}></Route>
           <Route path='/Calendar' element={<LargeCalendar />}></Route>
           <Route path="/profile" element={<ProfilePage />} ></Route>
+          <Route path="/login" element={<Login />}/>
         </Routes>
       </AppProvider>
 

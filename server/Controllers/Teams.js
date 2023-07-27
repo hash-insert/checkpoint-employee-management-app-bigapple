@@ -20,18 +20,18 @@ export const postTeam = async(req,res) =>{
 }
 
 
-// export const updateTeam = async(req,res) =>{
-//     try{
-//         const Teamid = req.body._id;
-//         const Team = await TeamSchema.findById(Teamid)
-//         //below two lines are wrong we will update when required.
-//         Team = new TeamSchema(req.body);
-//         await Team.save();
-//         res.status(200).json("Team Updated sucessfully")
-//     }catch(error){
-//         console.log(`Here is the error:${error}`)
-//     }
-// }
+export const updateTeam = async(req,res) =>{
+    try{
+        const Teamid = req.body._id;
+        const Team = await TeamSchema.findById(Teamid)
+        //below two lines are wrong we will update when required.
+        Team = new TeamSchema(req.body);
+        await Team.save();
+        res.status(200).json("Team Updated sucessfully")
+    }catch(error){
+        console.log(`Here is the error:${error}`)
+    }
+}
 export const deleteTeam = async(req,res) =>{
     try{
         const teamid = req.body
