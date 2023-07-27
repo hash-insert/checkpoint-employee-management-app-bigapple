@@ -1,0 +1,143 @@
+.card-container {
+  width: fit-content;
+  height: max-content;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.profile-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+}
+.close {
+  display: flex;
+  justify-content: flex-end;
+}
+.close-btn {
+  width: 20px;
+  height: 20px;
+  margin: 2px 2px 0 0;
+}
+.close-btn:hover {
+  transition: 0.3s ease;
+  transform: translateY(-1px);
+  background-color: red;
+  color: white;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.employee-card {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 30rem;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 15rem);
+}
+.employees-conatiner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+.search {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 20px 15px 20px 35px;
+  width: 65vw;
+  height: 30px;
+  margin-bottom: 5vh;
+}
+.search-icon {
+  position: absolute;
+  top: 26%;
+  left: 8px; /* Adjust this value to align the icon horizontally */
+  transform: translateY(-50%);
+  font-size: 22px; /* Adjust the icon size */
+  color: #555; /* Adjust the icon color */
+}
+.search:focus {
+  transition: 0.3s ease;
+  outline: 1px solid purple;
+}
+#empcard:hover {
+  cursor: pointer;
+}
+@media screen and (min-width: 777px) and (max-width: 1000px) {
+  .search-icon {
+    position: absolute;
+    top: 20%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #555;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 770px) {
+  .empname {
+    display: flex;
+    align-items: flex-end;
+  }
+  .profile-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vh 1vh 1vh 1vh;
+  }
+  .search {
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 20px 15px 20px 35px;
+    width: 85vw;
+    height: 50px;
+    margin-bottom: 5vh;
+  }
+  .search-icon {
+    position: absolute;
+    top: 23%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #555;
+  }
+}
+@media screen and (max-width: 480px) {
+  .employee-card {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background-color: white;
+    padding: 1rem;
+    text-align: center;
+    width: 22rem;
+    z-index: 10;
+    position: fixed;
+    top: 20vh;
+    left: calc(50% - 11rem);
+  }
+  .search-icon {
+    position: absolute;
+    top: 20%;
+    left: 8px; /* Adjust this value to align the icon horizontally */
+    transform: translateY(-50%);
+    font-size: 22px; /* Adjust the icon size */
+    color: #555; /* Adjust the icon color */
+  }
+  .search {
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 20px 15px 20px 35px;
+    width: 85vw;
+    height: 40px;
+    margin-bottom: 5vh;
+  }
+}
