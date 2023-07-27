@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // import { auth } from "./firebase";
 
-import "../login.css";
+import "../css/login.css";
 
 const Form = () => {
     const [email, setEmail] = useState("");
@@ -27,11 +27,11 @@ const Form = () => {
         }
   return (
     <div>
-      <form className="card">
+      <form id="card">
         <h1 className="card-header">LOGIN</h1>
         <div className="input-icons">
           <i className="fas fa-user icon"></i>
-          <input type="email" onChange={handleEmail} placeholder="Email" />
+          <input id="login-email" type="email" onChange={handleEmail} placeholder="Email" />
         </div>
         <div className="input-icons">
           <i className="fas fa-key icon"></i>
@@ -39,13 +39,14 @@ const Form = () => {
             type="password"
             onChange={handlePassword}
             placeholder="Password"
+            id="login-password"
           />
         </div>
-        <button className="btn" onClick={handleBtn}>
+        <button id="login-btn" className="btn" onClick={handleBtn}>
           Login
         </button>
       </form>
-      <h4>Couldn't login? Contact <a id="link" href="gmailto:abc@gmail.com">Admin</a> </h4> 
+      <h4 id="help-login">Couldn't login? Contact <a id="link" href="gmailto:abc@gmail.com">Admin</a> </h4> 
     </div>
   );
 };

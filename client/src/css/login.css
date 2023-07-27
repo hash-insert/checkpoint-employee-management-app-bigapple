@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Kanit&family=Lora:ital,wght@1,500&family=Nunito+Sans:wght@500&display=swap');
-.main {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Kanit&family=Lora:ital,wght@1,500&family=Nunito+Sans:wght@500&display=swap");
+.login {
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -13,6 +13,7 @@
 .form-container {
   width: 50%;
   height: 50vh;
+  height: fit-content;
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -22,7 +23,7 @@
   width: 48%;
   margin-right: 10%;
 }
-.card {
+#card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,14 +31,16 @@
 }
 .card-header {
   color: black;
+  margin-bottom: 2vh;
   font-family: "Nunito Sans", sans-serif;
 }
-input {
+#login-email,
+#login-password {
   width: 250px;
-  height: 3vh;
+  height: 6vh;
   padding: 10px 40px 10px 40px;
   margin-bottom: 1em;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 15px;
   border: 1px solid #ccc;
 }
@@ -45,9 +48,9 @@ input {
 input:focus {
   outline: 2px solid #5a2675 !important;
 }
-.btn {
-  width: 200px;
-  height: 50px;
+#login-btn {
+  width: 170px;
+  height: 45px;
   border: none;
   outline: none;
   background: #5a2675;
@@ -55,7 +58,7 @@ input:focus {
   font-size: 22px;
   border-radius: 40px;
   text-align: center;
-  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -76,21 +79,23 @@ input:focus {
   min-width: 40px;
   font-size: 20px;
 }
-h4 {
-  color: #ccc;
+#help-login {
+  color: #9d72b3;
   text-align: center;
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
   text-decoration: none;
   display: block;
+  margin-top: 5vh;
+  font-size: 20px;
 }
 
 #link {
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   text-decoration: none;
   color: #5a2675;
-  font-size: 15px ;
+  font-size: 15px;
 }
-#link:hover{
+#link:hover {
   text-decoration: underline;
 }
 #link:visited {
@@ -132,9 +137,7 @@ h4 {
     width: 80%;
   }
 }
-
-
-@media screen and (min-width: 511px) and (max-width: 870px){
+@media screen and (min-width: 520px) and (max-width: 870px) {
   .login-container {
     display: flex;
     align-items: center;
@@ -144,7 +147,7 @@ h4 {
 
   .form-container {
     width: 40vw;
-    height: auto;
+    height: fit-content;
     margin-top: 20px;
   }
 
@@ -155,8 +158,9 @@ h4 {
     margin-right: 0;
   }
 
-  input {
-    width: 20vw;
+  #login-email,
+  #login-password {
+    width: 35vw;
     height: 3vh;
     padding: 10px 40px 10px 40px;
     margin-bottom: 1em;
@@ -164,12 +168,16 @@ h4 {
     font-size: 15px;
     border: 1px solid #ccc;
   }
-
+  #help-login {
+    color: #9d72b3;
+    text-align: center;
+    font-family: "Kanit", sans-serif;
+    text-decoration: none;
+    display: block;
+    margin-top: 5vh;
+    font-size: 15px;
+  }
   .btn {
     width: 80%;
   }
 }
-
-
-
-

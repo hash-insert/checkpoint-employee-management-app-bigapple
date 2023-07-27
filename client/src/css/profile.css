@@ -1,0 +1,87 @@
+.staticData {
+  font-weight: 500;
+}
+.dynamic {
+  border: 1px solid #cbcbcb;
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+.updateProfile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  margin-right: 3vw;
+}
+.updateButton{
+    width: fit-content;
+    background-color: #C9A8F1;
+    height: 35px;
+    border: 1px solid #a5a5a5;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px 0px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+.updateButton:hover{
+  transform: translateY(-3px);
+}
+.updateData:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgb(147, 49, 147);
+}
+
+.updateData {
+  border: 1px solid #a5a5a5;
+  border-radius: 10px;
+  height: 40px;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+input[type="date"] {
+  appearance: none;
+  background-color: #fff;
+  padding: 4px 2px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url('../svgs/calendar.svg');
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  /* Add any other desired styles */
+}
+.submit,.cancel{
+  width: fit-content;
+  height: 35px;
+  border: 1px solid #a5a5a5;
+  border-radius: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px 0px;
+}
+.submit{
+  background-color: rgb(104, 202, 104);
+  cursor: pointer;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+.submit:hover,.cancel:hover{
+  transform: translateY(-3px);
+}
+.cancel{
+  background-color: rgb(245, 165, 165);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.buttonContainer{
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: end ;
+}
