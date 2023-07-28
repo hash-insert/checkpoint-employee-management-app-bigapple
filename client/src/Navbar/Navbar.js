@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Navbar.css";
-// import { VscAccount } from "react-icons/vsc";
 import { LuCalendarX2 } from "react-icons/lu";
 import { BsMicrosoftTeams } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
@@ -36,9 +35,6 @@ export default function Navbar() {
         <BsMicrosoftTeams />
         <IoCalendar />
         <LuCalendarX2 />
-        {/* <img src='/Daco_659067.png' alt='Teams not found'></img> */}
-        {/* <img src='/pngegg.png' alt='Timesheet not found'></img> */}
-        {/* <img src='/Leave.png' alt='Leaveimg not found'></img> */}
       </div>
     </div>
   )
