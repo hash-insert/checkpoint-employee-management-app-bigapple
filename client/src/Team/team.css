@@ -1,0 +1,65 @@
+.container{
+  border: 2px solid black;
+}
+
+
+.searchbox {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  justify-content:center
+
+}
+.searchbox i {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 1px;
+  border: 1px solid purple;
+  color: purple;
+  border-radius: 0px 10px 10px 0px;
+}
+
+input {
+  width: 50vw;
+  height: 40px;
+  border-radius: 10px 0 0 10px;
+
+  border: 1px solid purple;
+
+  outline: 0 0 0 0 !important;
+}
+
+input:focus-visible {
+  border: 2px solid purple;
+}
+.boxes {
+  margin: 5px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.box {
+  padding: 20px;
+  width: 75vw;
+margin: 5px;
+  border-radius: 10px;
+  background-image:linear-gradient(to right,#c9a8f1,white, #c9a8f1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.edit-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.team-btn{
+  margin-left: 100px;
+  border-radius: 10px;
+  color: white;
+  background-color: purple;
+}
