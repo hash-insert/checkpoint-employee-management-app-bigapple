@@ -5,6 +5,7 @@
 .timesheetroutes{
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 .timesheetroutes>*{
     margin-left: 1%;

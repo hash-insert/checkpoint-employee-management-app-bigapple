@@ -46,7 +46,7 @@ const Form = () => {
           Login
         </button>
       </form>
-      <h4 id="help-login">Couldn't login? Contact <a id="link" href="gmailto:abc@gmail.com">Admin</a> </h4> 
+      <h4 id="help-login">Couldn't login? Contact <a id="link" href="mailto:abc@gmail.com">Admin</a> </h4> 
     </div>
   );
 };

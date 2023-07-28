@@ -15,6 +15,10 @@ export default class Calendar extends React.Component {
             plugins={[dayGridPlugin, interactionPlugin]}
             ref={this.calendarComponentRef}
             dateClick={this.handleDateClick}
+            headerToolbar={{
+              left: "title",
+              right: "today prev,next prevYear,nextYear",
+            }}
           />
         </div>
       </div>
