@@ -13,7 +13,7 @@ const require = createRequire(import.meta.url);
 
 // import { serviceAccount } from "../firebase-admin.js";
 //Initialize the Firebase Admin SDK (Make sure you have the necessary credentials set up)
-const serviceAccount=require("../firebase-admin.json")
+const serviceAccount = require("../firebase-admin.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
@@ -117,7 +117,6 @@ export const updateUserData = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
-
   try {
     const { email, password } = req.body;
     // Authenticate the user using Firebase Authentication
@@ -126,14 +125,13 @@ export const loginUser = async (req, res) => {
       email,
       password
     );
-  
+
     const user = userCredential.user;
-    const accessToken=user.accessToken
+    const accessToken = user.accessToken;
+    const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
+     const role=idTokenResult.role
 
-    // const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
-
-   
-    res.json({ success: true,accessToken});
+    res.json({ success: true, role });
   } catch (error) {
     res.json({ success: false, message: "Error occurred while logging in" });
   }
