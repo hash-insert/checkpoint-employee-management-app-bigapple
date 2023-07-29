@@ -5,10 +5,15 @@ import axios from "axios";
 // import { auth } from "./firebase";
 
 import "../css/login.css";
+import EmpDashboard from "../Dashboard/empDashboard";
+import AdminDashboard from "../Dashboard/Dashboard";
+import { useNavigate } from "react-router";
 
 const Form = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [token, setToken] = useState("");
+    const navigate=useNavigate()
   
     const [authUser, setAuthUser] = useState(null);
     const handleEmail = (e) => {
@@ -23,10 +28,20 @@ const Form = () => {
           .post("http://localhost:9000/login", { email, password })
           .then((res) => {
             console.log(res.data);
+            setToken(res.data);
           });
         }
+
+        console.log(token);
+        const role = token.role;
   return (
-    <div>
+    <> {token ? (
+      role === "admin" ? (
+     navigate("/admin/dashboard")
+      ) : (
+        navigate("/employee/dashboard")
+      )
+    ) :  ( <div>
       <form id="card">
         <h1 className="card-header">LOGIN</h1>
         <div className="input-icons">
@@ -47,7 +62,8 @@ const Form = () => {
         </button>
       </form>
       <h4 id="help-login">Couldn't login? Contact <a id="link" href="gmailto:abc@gmail.com">Admin</a> </h4> 
-    </div>
+    </div>) }</>
+   
   );
 };
 

@@ -6,6 +6,8 @@ import { HomePage } from './pages/HomePage';
 import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
 import Login from "./pages/login.jsx"
+import AdminDashboard from './Dashboard/Dashboard';
+import EmpDashboard from './Dashboard/empDashboard';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path='/Calendar' element={<LargeCalendar />}></Route>
           <Route path="/profile" element={<ProfilePage />} ></Route>
           <Route path="/login" element={<Login />}/>
+          <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+          <Route path="/employee/dashboard" element={<EmpDashboard />}/>
         </Routes>
       </AppProvider>
 

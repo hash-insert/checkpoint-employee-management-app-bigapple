@@ -4,12 +4,16 @@ import axios from "axios";
 import { auth } from "./firebase";
 
 import "./login.css";
+import EmpDashboard from "./Dashboard/empDashboard";
+import AdminDashboard from "./Dashboard/Dashboard";
+
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [token, setToken] = useState("");
+  
 
   // useEffect(() => {
   //   const check = onAuthStateChanged(auth, (user) => {
@@ -42,6 +46,8 @@ function Login() {
         console.log(res.data);
         setToken(res.data);
       });
+    
+ 
   };
 
   console.log(token);
@@ -51,13 +57,9 @@ function Login() {
     <>
       {token ? (
         role === "admin" ? (
-          <div>
-            <h1>You are logged in Admin dashboard</h1>
-          </div>
+        <AdminDashboard/>
         ) : (
-          <div>
-            <h1>You are logged in employee dashboard </h1>
-          </div>
+        <EmpDashboard/>
         )
       ) : (
         <>
