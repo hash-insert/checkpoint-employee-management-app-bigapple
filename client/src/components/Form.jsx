@@ -5,8 +5,7 @@ import axios from "axios";
 // import { auth } from "./firebase";
 
 import "../css/login.css";
-import EmpDashboard from "../Dashboard/empDashboard";
-import AdminDashboard from "../Dashboard/Dashboard";
+
 import { useNavigate } from "react-router";
 
 const Form = () => {
@@ -36,8 +35,7 @@ const Form = () => {
         const role = token.role;
   return (
     <> {token ? (
-      role === "admin" ? (
-     navigate("/admin/dashboard")
+      role === "admin" ? ( navigate("/admin/dashboard")
       ) : (
         navigate("/employee/dashboard")
       )
@@ -63,7 +61,7 @@ const Form = () => {
       </form>
       <h4 id="help-login">Couldn't login? Contact <a id="link" href="gmailto:abc@gmail.com">Admin</a> </h4> 
     </div>) }</>
-   
+  
   );
 };
 
