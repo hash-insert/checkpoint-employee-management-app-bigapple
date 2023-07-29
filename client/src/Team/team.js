@@ -56,6 +56,7 @@ function TeamPage() {
     <>
       <div className="searchbox">
         <input
+        className="search-input"
           value={search}
           onChange={handleSearch}
           placeholder="Search Teams"

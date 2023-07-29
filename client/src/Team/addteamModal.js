@@ -45,7 +45,7 @@ const AddTeamModal = ({ showModal, closeModal, addTeam }) => {
             onChange={(e) => setTeamDesc(e.target.value)}
           />
         </label>
-        <button type="submit">Add Team</button>
+        <button className="add" type="submit">Add Team</button>
       </form>
     </div>
   );

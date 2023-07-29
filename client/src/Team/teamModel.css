@@ -1,39 +1,57 @@
 
 .form-box {
   position: absolute;
-background-color: white;
+background-image: linear-gradient(to right,white,#c9a8f1);
   top: 15%;
   left: 40%;
-  border: 2px solid purple;
+
   width: 350px;
   height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .close {
 align-self: center;
  font-weight: bolder;
- color: red;
+ color: #a650db;
   font-size: 30px;
   width: 30px;
   height: 30px;
-  box-shadow: 1px 1px 1px 1px red;
+  box-shadow: 1px 1px 1px 1px rgba(209, 27, 27, 0.171);
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
 }
 .close:hover {
   cursor: pointer;
 }
+label{
+  text-align: center;
+  font-weight: bolder;
+  color: #5a2675;
+}
 
 input {
+ 
 width: 300px;
+height: 30px;
   border-radius: 10px;
+  outline: 0 0 0 0 !important;
 
 }
 textarea {
+
  width: 300px;
   height: 100px;
+  outline: 0 0 0 0 !important;
 
+}
+.add{
+  background-color: #a650db;
+  height: 25px;
+  border-radius: 10px;
 }
