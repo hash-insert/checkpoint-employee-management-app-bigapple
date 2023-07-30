@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import userRoute from "./Routes/User.js"
 import teamsRoute from "./Routes/Teams.js"
+import timesheets from "./Routes/TImeSheets.js"
 
 const app = express();
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(cors())
 
 app.use("/",userRoute)
 app.use("/admin/teams",teamsRoute)
+app.use("/auth",timesheets)
 
 app.get("/",(req,res)=> {
     res.send("welcome to login")
