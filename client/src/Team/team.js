@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./team.css";
 import { useState } from "react";
 import Card from "./card";
@@ -6,6 +6,7 @@ import AddTeamModal from "./addteamModal";
 
 function TeamPage() {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const data = [
     {
@@ -56,7 +57,7 @@ function TeamPage() {
     <>
       <div className="searchbox">
         <input
-        className="search-input"
+          className="search-input"
           value={search}
           onChange={handleSearch}
           placeholder="Search Teams"
@@ -73,7 +74,9 @@ function TeamPage() {
             filteredteams.map((data, i) => {
               return (
                 <li key={i}>
-                  <Card name={data.Team} desc={data.desc} />
+                  <Link to="/admin/team/teammembers">
+                    <Card name={data.Team} desc={data.desc} />
+                  </Link>
                 </li>
               );
             })
