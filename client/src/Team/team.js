@@ -7,6 +7,14 @@ import AddTeamModal from "./addteamModal";
 function TeamPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [employees, setEmployees] = useState([
+    "John",
+    "Elena",
+    "Zack",
+    "Roonie",
+    "Hailey",
+  ]);
+  const [addEmp, setAddEmp] = useState("");
 
   const data = [
     {
@@ -33,12 +41,23 @@ function TeamPage() {
   const [team, setTeams] = useState(data);
 
   const [search, setSearch] = useState("");
+  const [toggle,setToggle]=useState(false)
 
   const handleSearch = (e) => {
     let value = e.target.value;
 
     setSearch(value);
   };
+
+
+  const handleAddEmp = () => {
+    setEmployees([...employees, addEmp]);
+    console.log(employees);
+  };
+
+  const handleEmp=()=> {
+    setToggle(true)
+  }
   const filteredteams = team.filter((item) => item.Team.indexOf(search) > -1);
 
   const addTeam = (newTeam) => {
@@ -55,43 +74,62 @@ function TeamPage() {
 
   return (
     <>
-      <div className="searchbox">
-        <input
-          className="search-input"
-          value={search}
-          onChange={handleSearch}
-          placeholder="Search Teams"
-        />
-        {/* <i className="fa fa-search"></i>{" "} */}
+      <div className="whole-page">
+        <div className="left-half">
+          <div className="searchbox">
+            <input
+              className="search-input"
+              value={search}
+              onChange={handleSearch}
+              placeholder="Search Teams"
+            />
+            {/* <i className="fa fa-search"></i>{" "} */}
 
-        <button className="team-btn" onClick={openModal}>
-          Add a Team
-        </button>
+            <button className="team-btn" onClick={openModal}>
+              Add a Team
+            </button>
+          </div>
+          <div className="container">
+            {filteredteams.length > 0 ? (
+              filteredteams.map((data, i) => {
+                return <Card key={i} name={data.Team} desc={data.desc} onClick={handleEmp} />;
+              })
+            ) : (
+              <div>
+                <p>No results found</p>{" "}
+              </div>
+            )}
+          </div>
+          <AddTeamModal
+            showModal={showModal}
+            closeModal={closeModal}
+            addTeam={addTeam}
+          />
+        </div>
+
+        {!toggle ? (<div> Nothing to display</div>) : ( <div className="right-half">
+          <div className="card">
+            <h1>Team Name</h1>
+            <h2>Project Name</h2>
+            <h2>Team Lead</h2>
+            <ul className="emp">
+              {employees.map((name, i) => {
+                return <li key={i}>{name}</li>;
+              })}
+            </ul>
+          </div>
+          <div className="Empbtn">
+            <input
+              value={addEmp}
+              onChange={(e) => {
+                setAddEmp(e.target.value);
+              }}
+            />
+            <button onClick={handleAddEmp}>AddEmp</button>
+          </div>
+        </div>)}
+       
       </div>
-      <div className="container">
-        <ul className="boxes">
-          {filteredteams.length > 0 ? (
-            filteredteams.map((data, i) => {
-              return (
-                <li key={i}>
-                  <Link to="/admin/team/teammembers">
-                    <Card name={data.Team} desc={data.desc} />
-                  </Link>
-                </li>
-              );
-            })
-          ) : (
-            <div>
-              <p>No results found</p>{" "}
-            </div>
-          )}
-        </ul>
-      </div>
-      <AddTeamModal
-        showModal={showModal}
-        closeModal={closeModal}
-        addTeam={addTeam}
-      />
     </>
   );
 }
