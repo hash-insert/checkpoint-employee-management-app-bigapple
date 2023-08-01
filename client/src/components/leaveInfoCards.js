@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./leaveinfo.css";
+import './leaveinfo.css';
 
 const LeaveInfoCards = ({ leaveData }) => {
   const [activeCard, setActiveCard] = useState(null);
@@ -10,10 +10,9 @@ const LeaveInfoCards = ({ leaveData }) => {
 
   return (
     <div className="leave-info-cards-container">
-      <h2>Previous Leaves</h2>
       {leaveData.map((leave, index) => (
         <div
-          className={`leave-info-card ${index === activeCard ? 'active' : ''}`}
+          className={`leave-info-card ${index === activeCard ? 'active' : ''} ${getCardColorClass(leave.LeaveStatus)}`}
           key={index}
           onClick={() => handleCardClick(index)}
         >
@@ -30,6 +29,20 @@ const LeaveInfoCards = ({ leaveData }) => {
       ))}
     </div>
   );
+};
+
+
+const getCardColorClass = (leaveStatus) => {
+  switch (leaveStatus) {
+    case 'Rejected':
+      return 'rejected';
+    case 'Pending':
+      return 'pending';
+    case 'Approved':
+      return 'approved';
+    default:
+      return '';
+  }
 };
 
 export default LeaveInfoCards;

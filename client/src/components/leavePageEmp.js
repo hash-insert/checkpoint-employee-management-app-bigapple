@@ -1,7 +1,9 @@
+
 import React from "react";
 import LeaveInfoCards from "./leaveInfoCards";
 import "./leaveEmp.css";
-function leavePageEmp() {
+
+function LeavePageEmp() {
   const leaveData = [
     {
       title: "Leave 1",
@@ -24,6 +26,13 @@ function leavePageEmp() {
       toDate: "2023-08-15",
       LeaveStatus: "Pending",
     },
+    {
+      title: "Leave 2",
+      reason: "Vacation",
+      fromDate: "2023-08-10",
+      toDate: "2023-08-15",
+      LeaveStatus: "Rejected",
+    }
   ];
 
   return (
@@ -32,17 +41,22 @@ function leavePageEmp() {
         <div className="leave-card">
           <h2>Apply for Leave</h2>
           <div className="input-container">
-            <label>Description:</label>
+            <label htmlFor="description">Description:</label>
             <input
               type="text"
               id="description"
               placeholder="Enter your leave reason"
             />
-            <label>From Date:</label>
-            <input type="date" id="from-date" />
 
-            <label>To Date:</label>
-            <input type="date" id="to-date" />
+            <div className="dates">
+              <label htmlFor="from-date">From Date:</label>
+              <input type="date" id="from-date" />
+
+              <span className="hyphen">-</span>
+
+              <label htmlFor="to-date">To Date:</label>
+              <input type="date" id="to-date" />
+            </div>
 
             <button className="apply-button">Apply</button>
           </div>
@@ -53,4 +67,4 @@ function leavePageEmp() {
   );
 }
 
-export default leavePageEmp;
+export default LeavePageEmp;

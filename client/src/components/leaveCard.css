@@ -1,10 +1,12 @@
 .leave-card-admin {
   border-radius: 8px;
-  box-shadow: 0 2px 4px #5a2675;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   padding: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-top: 3%; 
 }
+
 
 .button-group {
   display: flex;
@@ -12,18 +14,79 @@
   margin-top: 2%;
 }
 
-.approve-button,
-.reject-button {
-  background-color: #9d72b3;
+
+.reject-button,
+.confirm-reject-button
+ {
+  background-color: #df7474;
   color: #fff;
   border: none;
   border-radius: 4px;
   padding: 1%;
   cursor: pointer;
   width: 45%;
+  transition: background-color 0.2s ease;
+  font-size: 18px;
+  margin-top: 4%;
+}
+.cancel-reject-button
+{
+ 
+  border: none;
+  border-radius: 4px;
+  padding: 1%;
+  cursor: pointer;
+  width: 45%;
+  transition: background-color 0.2s ease;
+  font-size: 18px;
+  margin-top: 4%;
+}
+.approve-button{ background-color: #68c27e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 1%;
+  cursor: pointer;
+  width: 45%;
+  transition: background-color 0.2s ease;
+  font-size: 18px;
+  margin-top: 4%;}
+
+.reject-button:hover,
+.confirm-reject-button:hover
+ {
+  background-color:#d46767;
+
+}
+.cancel-reject-button:hover{
+  background-color: #ccc;
+}
+.approve-button:hover{
+  background-color: #4dbb69
+}
+.rejection-input {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
 }
 
-.approve-button:hover,
-.reject-button:hover {
-  background-color: #5a2675;
+.rejection-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+ 
+}
+
+.rejection-input input:focus{
+  outline:none;
+   border:1px solid #9d72b3 ;  
+}
+
+.leave-card-admin p{
+  font-size: 20px;
+  color: #9656b9;
+   margin: 8px 0; 
+  word-wrap: break-word; 
 }
