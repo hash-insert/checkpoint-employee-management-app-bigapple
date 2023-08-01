@@ -31,7 +31,7 @@ export const addUser = async (req, res) => {
       profileImg,
       noOfLeaves,
     } = req.body;
-    try {
+   
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -39,11 +39,7 @@ export const addUser = async (req, res) => {
       );
 
       await admin.auth().setCustomUserClaims(userCredential.user.uid, { role });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json("Error creating user in Firebase Authentication");
-      return;
-    }
+ 
 
     let saltRounds = 5;
     let salt = await bcrypt.genSalt(saltRounds);
@@ -128,10 +124,10 @@ export const loginUser = async (req, res) => {
 
     const user = userCredential.user;
     const accessToken = user.accessToken;
-    const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
-     const role=idTokenResult.role
+    // const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
+    //const role=idTokenResult.role
 
-    res.json({ success: true, role });
+    res.json({ success: true, accessToken });
   } catch (error) {
     res.json({ success: false, message: "Error occurred while logging in" });
   }
