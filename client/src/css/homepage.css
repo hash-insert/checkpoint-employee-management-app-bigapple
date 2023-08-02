@@ -57,18 +57,20 @@
     background-color: rgb(107, 104, 104);
     z-index: 10;
 }
-.nav123{
+.login-button{
     margin-right: 10%;
     margin-top: 1.3%;
 }
-.nav123>*{
+.login-button>*{
     display: inline-block;
     color: white;
     padding: 12%;
     border-radius: 15px;
+    display: inline-block;
+    width:fit-content;
     background-color: #5a2675;
 }
-.nav123>*:hover{
+.login-button>*:hover{
     transition: 0.5s ease;
     transform: translateY(-3px);
 }

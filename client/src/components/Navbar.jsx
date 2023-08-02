@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <nav className='NavBar'>
       <h3 className="empHeading" onClick={()=>(navigate('/'))}>EMPLOYEE MANAGEMENT APP</h3>
-      <div className='nav123'>
+      <div className='login-button'>
         <NavLink to='/login'>LOGIN</NavLink>
     </div>
     </nav>
