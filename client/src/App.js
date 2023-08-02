@@ -8,6 +8,8 @@ import Login from "./pages/login.jsx"
 import TimeSheetsAdmin from './pages/TimeSheetsAdmin.js';
 import EmployeePage from './pages/employees.jsx'
 
+import AdminDashboard from './Dashboard/Dashboard';
+import EmpDashboard from './Dashboard/empDashboard';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/timesheetadmin" element={<TimeSheetsAdmin/>}></Route>
           <Route path="/employees" element={<EmployeePage />}></Route>
+          <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+          <Route path="/employee/dashboard" element={<EmpDashboard />}/>
         </Routes>
       </AppProvider>
   );
