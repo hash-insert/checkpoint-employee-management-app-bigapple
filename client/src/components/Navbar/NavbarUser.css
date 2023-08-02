@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.ParentNavbar{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+.Navbaruser{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid white;
+    background-color: purple;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.rightroutes{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.NavRoutes{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    color: white;
+}
+.NavRoutes>*{
+    margin-right: 10px;
+}
+.NavbarBottom{
+    display: none;
+    position: fixed;
+    bottom: 0 ;
+    left: 0;
+    width: 100vw;
+    background-color: purple;
+    justify-content: space-evenly;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.NavbarBottom>*{
+    color: white;
+    width: 40px;
+    height: 40px;
+    padding: 0.5%;
+}
+.ProfileLogo{
+    color: white;
+    height:35px;
+    width: 35px;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+@media screen and (max-width:900px) {
+    .NavRoutes{
+        display: none;
+    }
+    .NavbarBottom{
+        display: flex;
+    }
+}

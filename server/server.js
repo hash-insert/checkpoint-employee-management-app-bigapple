@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import empRoute from "./Routes/employee.js"
+import userRoute from "./Routes/User.js"
 import teamsRoute from "./Routes/Teams.js"
 const app = express();
 dotenv.config();
@@ -12,8 +12,12 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
 
-app.use("/",empRoute)
+app.use("/",userRoute)
 app.use("/admin/teams",teamsRoute)
+
+app.get("/",(req,res)=> {
+    res.send("welcome to login")
+})
 
 app.listen(PORT,()=>{
     console.log(`Server started sucessfully in the ${PORT}`)
