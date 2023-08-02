@@ -83,7 +83,7 @@
     color: #555;
   }
 }
-@media screen and (min-width: 480px) and (max-width: 770px) {
+@media screen and (min-width: 500px) and (max-width: 770px) {
   .empname {
     display: flex;
     align-items: flex-end;
@@ -111,7 +111,7 @@
     color: #555;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .employee-card {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
