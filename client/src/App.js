@@ -6,6 +6,7 @@ import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
 import Login from "./pages/login.jsx"
 import TimeSheetsAdmin from './pages/TimeSheetsAdmin.js';
+import EmployeePage from './pages/employees.js'
 
 
 function App() {
@@ -17,10 +18,11 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} ></Route>
           <Route path="/login" element={<Login />}/>
           <Route path="/timesheetadmin" element={<TimeSheetsAdmin/>}></Route>
+          <Route path="/employees" element={<EmployeePage />}></Route>
         </Routes>
       </AppProvider>
   );
 }
-
+  
 export default App;
 
