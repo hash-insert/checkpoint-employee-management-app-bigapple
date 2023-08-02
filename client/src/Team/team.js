@@ -3,17 +3,12 @@ import "./team.css";
 import { useState } from "react";
 import Card from "./card";
 import AddTeamModal from "./addteamModal";
+import TeamMembers from "./team-members";
 
 function TeamPage() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const [employees, setEmployees] = useState([
-    "John",
-    "Elena",
-    "Zack",
-    "Roonie",
-    "Hailey",
-  ]);
+
   const [addEmp, setAddEmp] = useState("");
 
   const data = [
@@ -41,7 +36,8 @@ function TeamPage() {
   const [team, setTeams] = useState(data);
 
   const [search, setSearch] = useState("");
-  const [toggle,setToggle]=useState(false)
+  const [toggle, setToggle] = useState(false);
+  const [selectedTeam, setSelectedTeam] = useState(""); 
 
   const handleSearch = (e) => {
     let value = e.target.value;
@@ -49,15 +45,11 @@ function TeamPage() {
     setSearch(value);
   };
 
-
-  const handleAddEmp = () => {
-    setEmployees([...employees, addEmp]);
-    console.log(employees);
+  const handleEmp = (teamName) => {
+    setToggle(true);
+    setSelectedTeam(teamName);
   };
 
-  const handleEmp=()=> {
-    setToggle(true)
-  }
   const filteredteams = team.filter((item) => item.Team.indexOf(search) > -1);
 
   const addTeam = (newTeam) => {
@@ -83,7 +75,6 @@ function TeamPage() {
               onChange={handleSearch}
               placeholder="Search Teams"
             />
-            {/* <i className="fa fa-search"></i>{" "} */}
 
             <button className="team-btn" onClick={openModal}>
               Add a Team
@@ -92,7 +83,14 @@ function TeamPage() {
           <div className="container">
             {filteredteams.length > 0 ? (
               filteredteams.map((data, i) => {
-                return <Card key={i} name={data.Team} desc={data.desc} onClick={handleEmp} />;
+                return (
+                  <Card
+                    key={i}
+                    name={data.Team}
+                    desc={data.desc}
+                    onClick={()=>handleEmp(data.Team)}
+                  />
+                );
               })
             ) : (
               <div>
@@ -107,28 +105,18 @@ function TeamPage() {
           />
         </div>
 
-        {!toggle ? (<div> Nothing to display</div>) : ( <div className="right-half">
-          <div className="card">
-            <h1>Team Name</h1>
-            <h2>Project Name</h2>
-            <h2>Team Lead</h2>
-            <ul className="emp">
-              {employees.map((name, i) => {
-                return <li key={i}>{name}</li>;
-              })}
-            </ul>
-          </div>
-          <div className="Empbtn">
-            <input
-              value={addEmp}
-              onChange={(e) => {
-                setAddEmp(e.target.value);
-              }}
+        {!toggle ? (
+          <div className="flipside">
+            <img
+              className="team-pic"
+              src="https://w0.peakpx.com/wallpaper/802/222/HD-wallpaper-success-quotes-lucky-mantra-network-marketing-quote-sayings.jpg"
             />
-            <button onClick={handleAddEmp}>AddEmp</button>
           </div>
-        </div>)}
-       
+        ) : (
+          <div className="right-half">
+            <TeamMembers />
+          </div>
+        )}
       </div>
     </>
   );
