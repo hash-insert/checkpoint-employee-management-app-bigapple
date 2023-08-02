@@ -7,9 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 import { EmployeeProvider } from "./context/employeeDetail";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <ChakraProvider>
+        <EmployeeProvider>
+          <App />
+        </EmployeeProvider>
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

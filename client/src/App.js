@@ -6,7 +6,7 @@ import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
 import Login from "./pages/login.jsx"
 import TimeSheetsAdmin from './pages/TimeSheetsAdmin.js';
-import EmployeePage from './pages/employees.js'
+import EmployeePage from './pages/employees.jsx'
 
 
 function App() {
