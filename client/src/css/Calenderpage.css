@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.timesheetroutes{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.timesheetroutes>*{
+    margin-left: 1%;
+    border-radius: 15px;
+    color: white;
+    padding: 5px;
+}
+.maincalender{
+    width: 80vw;
+    height: auto;
+    margin-left: 90px;
+    /* display: none; */
+}

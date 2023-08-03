@@ -1,6 +1,22 @@
 import User from "../Models/User.js";
+import admin from "firebase-admin";
 import bcrypt from "bcrypt";
+import { auth } from "../firebase/firebase.js";
 
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+// import { serviceAccount } from "../firebase-admin.js";
+//Initialize the Firebase Admin SDK (Make sure you have the necessary credentials set up)
+const serviceAccount = require("../firebase-admin.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 export const addUser = async (req, res) => {
   try {
     const {
@@ -15,6 +31,16 @@ export const addUser = async (req, res) => {
       profileImg,
       noOfLeaves,
     } = req.body;
+   
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await admin.auth().setCustomUserClaims(userCredential.user.uid, { role });
+ 
+
     let saltRounds = 5;
     let salt = await bcrypt.genSalt(saltRounds);
     let hashedPassword = await bcrypt.hash(password, salt);
@@ -40,7 +66,7 @@ export const addUser = async (req, res) => {
       res.status(200).json("Saved Successfully");
     }
   } catch (err) {
-    res.send("Error occured while saving the data", err);
+    res.send("Error occured while saving the data" + err);
   }
 };
 
@@ -73,16 +99,36 @@ export const deleteUserById = async (req, res) => {
   }
 };
 
-export const updateUserData = async(req,res)=>{
-    try{
-        const userId = req.params.userId
-        const obj = req.body;
-        const result = await User.updateOne({ userId: userId }, obj);
-        if(result.modifiedCount==1){
-            res.status(200).json("Updated Sucessfully")
-        }
-    }catch(err){
-        res.json("Error occured while updating the data", err)
+export const updateUserData = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const obj = req.body;
+    const result = await User.updateOne({ userId: userId }, obj);
+    if (result.modifiedCount == 1) {
+      res.status(200).json("Updated Sucessfully");
     }
-}
+  } catch (err) {
+    res.json("Error occured while updating the data", err);
+  }
+};
 
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    // Authenticate the user using Firebase Authentication
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    const user = userCredential.user;
+    const accessToken = user.accessToken;
+    // const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
+    //const role=idTokenResult.role
+
+    res.json({ success: true, accessToken });
+  } catch (error) {
+    res.json({ success: false, message: "Error occurred while logging in" });
+  }
+};
