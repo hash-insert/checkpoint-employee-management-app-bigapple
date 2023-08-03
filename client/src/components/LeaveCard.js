@@ -1,72 +1,76 @@
 import React, { useState } from 'react';
-import "./leaveCard.css"; 
+import './leaveCard.css';
 
-
-const LeaveCard = ({ leave, onApproveReject }) => {
-  const { userId, title,userName, reason, fromDate, toDate, LeaveStatus } = leave;
-  const [rejectionReason, setRejectionReason] = useState("");
+const LeaveCard = ({ leaveData, onUpdateLeaveStatus }) => {
+  const [rejectionReason, setRejectionReason] = useState('');
   const [showRejectionInput, setShowRejectionInput] = useState(false);
 
-
-
-  const handleRejectClick = () => {
+  const handleRejectClick = (leaveId) => {
     if (showRejectionInput) {
       if (rejectionReason.trim() !== '') {
-        onApproveReject(userId,"Rejected");
+        onUpdateLeaveStatus(leaveId, 'Rejected');
       }
       setShowRejectionInput(false);
-      setRejectionReason("");
+      setRejectionReason('');
     } else {
-      // Show Rejection Input
       setShowRejectionInput(true);
     }
   };
-  const handleApproveClick = () => {
-    onApproveReject(userId,"Approved");
-}
+
+  const handleApproveClick = (leaveId) => {
+    onUpdateLeaveStatus(leaveId, 'Approved');
+  };
+
   const handleRejectionReasonChange = (e) => {
     setRejectionReason(e.target.value);
   };
 
   return (
-    <div className="leave-card-admin">
-      <pre style={{ textAlign: "center", fontFamily: "'kanit', sans-serif", fontSize: "23px", color: "purple" }}>{userName}  </pre>
-      <p>Reason: {reason}</p>
-      <p>From Date: {fromDate}</p>
-      <p>To Date: {toDate}</p>
-      <p>Leave Status: {LeaveStatus}</p>
-      {showRejectionInput && (
-        <div className="rejection-input">
-          <input
-            type="text"
-            value={rejectionReason}
-            onChange={handleRejectionReasonChange}
-            placeholder="Enter reason for rejection"
-          />
+    <>
+      {leaveData.map((leave) => (
+        <div key={leave._id} className="leave-card-admin">
+          <pre style={{ textAlign: 'center', fontFamily: "'kanit', sans-serif", fontSize: '23px', color: 'purple' }}>
+            {leave.userName}{' '}
+          </pre>
+          <p>Reason: {leave.reason}</p>
+          <p>From Date: {leave.fromDate}</p>
+          <p>To Date: {leave.toDate}</p>
+          <p>Leave Status: {leave.LeaveStatus}</p>
+          {showRejectionInput && (
+            <div className="rejection-input">
+              <input
+                type="text"
+                value={rejectionReason}
+                onChange={handleRejectionReasonChange}
+                placeholder="Enter reason for rejection"
+              />
+            </div>
+          )}
+          <div className="button-group">
+            {showRejectionInput ? (
+              <>
+                <button className="confirm-reject-button" onClick={() => handleRejectClick(leave._id)}>
+                  Confirm Reject
+                </button>
+                <button className="cancel-reject-button" onClick={handleRejectClick}>
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="approve-button" onClick={() => handleApproveClick(leave._id)}>
+                  Approve
+                </button>
+                <button className="reject-button" onClick={() => handleRejectClick(leave._id)}>
+                  Reject
+                </button>
+              </>
+            )}
+          </div>
         </div>
-      )}
-      <div className="button-group">
-        {showRejectionInput ? (
-          <>
-            <button className="confirm-reject-button" onClick={handleRejectClick}>
-              Confirm Reject
-            </button>
-            <button className="cancel-reject-button" onClick={handleRejectClick}>
-              Cancel
-            </button>
-          </>
-        ) : (
-          <>
-            <button className="approve-button" onClick={handleApproveClick}>
-              Approve
-            </button>
-            <button className="reject-button" onClick={handleRejectClick}>
-              Reject
-            </button>
-          </>
-        )}
-      </div>
-    </div>
+      ))}
+    </>
   );
 };
+
 export default LeaveCard;

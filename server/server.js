@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import userRoute from "./Routes/User.js"
 import teamsRoute from "./Routes/Teams.js"
+import leavesRoute from "./Routes/Leaves.js"
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT
@@ -12,9 +13,11 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
 
-app.use("/",userRoute)
+app.use("/", userRoute)
+
 app.use("/admin/teams",teamsRoute)
 
+app.use("/empLeave",leavesRoute)
 app.listen(PORT,()=>{
     console.log(`Server started sucessfully in the ${PORT}`)
     mongoose.connect(MONGO).then(()=>{

@@ -1,9 +1,5 @@
 import mongoose from "mongoose";
 const leaveSchema = mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
   reason: {
     type: String,
     required: true,
@@ -19,7 +15,7 @@ const leaveSchema = mongoose.Schema({
   LeaveStatus: {
     type: String,
     requried: true,
-    default: pending,
+    default: "pending",
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,

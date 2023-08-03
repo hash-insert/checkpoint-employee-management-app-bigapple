@@ -16,7 +16,7 @@ const LeaveInfoCards = ({ leaveData }) => {
           key={index}
           onClick={() => handleCardClick(index)}
         >
-          <h4>Title: {leave.title}</h4>
+          <h4>Title: {leave.reason}</h4>
           {index === activeCard && (
             <div className="leave-details">
               <p>Reason: {leave.reason}</p>
@@ -30,13 +30,11 @@ const LeaveInfoCards = ({ leaveData }) => {
     </div>
   );
 };
-
-
 const getCardColorClass = (leaveStatus) => {
   switch (leaveStatus) {
     case 'Rejected':
       return 'rejected';
-    case 'Pending':
+    case 'pending':
       return 'pending';
     case 'Approved':
       return 'approved';
