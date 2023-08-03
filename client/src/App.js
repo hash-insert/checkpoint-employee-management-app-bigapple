@@ -1,7 +1,9 @@
 
 import { Routes, Route } from "react-router-dom"
 import ProfilePage from './pages/profile';
-import './App.css';
+  import './App.css';
+  import LeavePageAdmin from './components/leavePageAdmin';
+import LeavePageEmp from "./components/leavePageEmp"
 import { HomePage } from './pages/HomePage';
 import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
