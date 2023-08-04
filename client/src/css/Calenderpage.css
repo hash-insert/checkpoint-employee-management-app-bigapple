@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    margin: 15px;
 }
 .timesheetroutes>*{
     margin-left: 1%;
@@ -16,6 +17,6 @@
 .maincalender{
     width: 80vw;
     height: auto;
-    margin-left: 90px;
+    margin-left: 9%;
     /* display: none; */
 }

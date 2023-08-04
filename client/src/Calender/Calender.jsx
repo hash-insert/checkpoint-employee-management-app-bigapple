@@ -10,8 +10,7 @@ export default class Calendar extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <FullCalendar
+          <FullCalendar 
             plugins={[dayGridPlugin, interactionPlugin]}
             ref={this.calendarComponentRef}
             dateClick={this.handleDateClick}
@@ -20,7 +19,6 @@ export default class Calendar extends React.Component {
               right: "today prev,next prevYear,nextYear",
             }}
           />
-        </div>
       </div>
     );
   }
