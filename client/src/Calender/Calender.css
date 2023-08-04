@@ -14,3 +14,35 @@
 .fc .fc-daygrid{
     color: #5a2675;
 }
+.fc-media-screen{
+    height: 90vh;
+}
+.fc-dayGridMonth-view .fc-scrollgrid{
+    border: 2px solid #5a2675;
+    border-radius: 10px;
+}
+.fc .fc-scroller .fc-scrollgrid-section-header .fc-scrollgrid-section .fc-scroller-harness .fc-col-header {
+    border: 2px solid #5a2675 !important;
+}
+/* <tr role="presentation" class="fc-scrollgrid-section fc-scrollgrid-section-header ">…</tr><div class="fc-scroller-harness"><table role="presentation" class="fc-col-header " style="width: 1319px;"> */
+
+@media screen and (max-width:700px) {
+    .fc .fc-toolbar-title{
+        font-size: 1.2em !important;
+    }
+    .fc-today-button{
+        display: none !important;
+    }
+    .fc-button-group{
+        width: 90px;
+    }
+    .fc-button{
+        width: fit-content;
+        padding: 0;
+    }   
+}
+@media screen and (max-width:900px){
+    .fc-dayGridMonth-view{
+        height: 60vh;
+    }
+}

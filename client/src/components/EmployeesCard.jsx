@@ -69,6 +69,7 @@ const EmployeesCard = () => {
     );
   };
   return (
+    <>
     <div className="employees-container">
       <div className="search-container">
         <FiSearch className="search-icon" />
@@ -81,6 +82,7 @@ const EmployeesCard = () => {
             handleSearch(e.target.value);
           }}
         />
+        <div></div>
       </div>
       <div className="card-container">
         <Grid
@@ -174,6 +176,7 @@ const EmployeesCard = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

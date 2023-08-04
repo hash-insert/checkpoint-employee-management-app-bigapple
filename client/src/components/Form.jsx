@@ -37,7 +37,7 @@ console.log(role)
 
     
       if (role === "admin") {
-        navigate("/admin/dashboard");
+        navigate("/employees");
       } else {
         navigate("/employee/dashboard");
       }
