@@ -1,0 +1,89 @@
+.adduser-box{
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    background-color: white;
+    /* padding: 1rem; */
+    text-align: center;
+    width: 30rem;
+    z-index: 10;
+    position: fixed;
+    top: 13vh;
+    left: calc(50% - 15rem);
+}
+.userData{
+    border: 1px solid #5a2675;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+.submit-btn{
+    width: 50px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 5px ;
+    background-color: 	#9d72b3;
+}
+.submit-btn:hover{
+    background-color:#c9a8f1;
+    transform: translateY(-2px);
+    transition: 0.3s ease;
+}
+
+.button-submit{
+    display: flex;
+    justify-content: space-evenly;
+}
+.close-btn {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+  }
+  .close-btn:hover {
+    transition: 0.3s ease;
+    transform: translateY(-1px);
+    background-color: red;
+    color: white;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+  .add-user-form{
+        display: grid;
+       grid-template-columns: auto auto;
+        column-gap: 1vw;
+        row-gap: 2vh;
+        padding: 1.5vw;
+  }
+  @media screen and (max-width: 500px) {
+    .add-user-form {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 5px;
+      padding: 1.5vw;
+    }
+    .adduser-box {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      background-color: white;
+      text-align: center;
+      width: 90vw;
+      max-height: 80vh;
+      overflow-y: auto;
+      z-index: 10;
+      position: fixed;
+      top: 10vh;
+      left: 5vw;
+    }
+    .submit-btn {
+      width: 50px;
+      height: 30px;
+      border-radius: 15px;
+      margin-bottom: 5px;
+      background-color: #9d72b3;
+    }
+    .userData {
+      padding: 10px;
+      height: 40px;
+      width: 90%;
+      font-size: 14px;
+    }
+  }
+  

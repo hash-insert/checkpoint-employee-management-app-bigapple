@@ -6,6 +6,8 @@ import { EmployeeContext } from "../context/employeeDetail";
 import EmployeeCard from "./EmployeeCard";
 import Backdrop from "./Backdrop";
 import { FiSearch } from "react-icons/fi";
+import { IoMdPersonAdd } from "react-icons/io";
+import Adduser from "./Adduser";
 
 const EmployeesCard = () => {
   const [empDetails, setEmpDetails] = useState([
@@ -56,6 +58,8 @@ const EmployeesCard = () => {
   };
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredEmpDetails, setFilteredEmpDetails] = useState(empDetails);
+  const [addUserBackDrop, setAddUserBackDrop] = useState(false);
+  const [addUserForm,setAddUserForm]= useState(false);
   const handleSearch = (term) => {
     setSearchTerm(term);
     const filteredWithName = empDetails.filter((item) =>
@@ -68,114 +72,131 @@ const EmployeesCard = () => {
       filteredWithName.length > 0 ? filteredWithName : filterWithID
     );
   };
+  const handleAddUser = () => {
+    setAddUserBackDrop(true);
+    setAddUserForm(true);
+  };
   return (
     <>
-    <div className="employees-container">
-      <div className="search-container">
-        <FiSearch className="search-icon" />
-        <input
-          type="text"
-          placeholder="Search"
-          className="search"
-          value={searchTerm}
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
-        />
-        <div></div>
-      </div>
-      <div className="card-container">
-        <Grid
-          templateColumns={{
-            base: "1fr",
-            sm: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-            lg: "repeat(3,1fr)",
-          }}
-          gap={6}
-        >
-          {filteredEmpDetails.map((item) => (
-            <Card
-              direction={{ base: "column", md: "column", sm: "row" }}
-              overflow="hidden"
-              variant="outline"
-              key={item.empId}
-              id="empcard"
-              style={{ backgroundColor: "rgba(228, 228, 228, 0.699)" }}
-              onClick={() => handleClick(item)}
-            >
-              <div className="profile-image">
-                <Image
-                  objectFit="cover"
-                  maxW={{ base: "100%", sm: "200px", md: "200px" }}
-                  src={item.profileImg}
-                  alt="profile images"
-                  style={{
-                    borderRadius: "100%",
-                    width: "180px",
-                    height: "180px",
-                  }}
-                />
-                <div className="empname">
-                  <Heading size="lg">{item.name}</Heading>{" "}
+      <div className="employees-container">
+        <div className="search-container">
+          <FiSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="search"
+            value={searchTerm}
+            onChange={(e) => {
+              handleSearch(e.target.value);
+            }}
+          />
+          <button onClick={handleAddUser} className="add-user-btn">
+            <IoMdPersonAdd className="add-icon" />
+          </button>
+        </div>
+        <div className="card-container">
+          <Grid
+            templateColumns={{
+              base: "1fr",
+              sm: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3,1fr)",
+            }}
+            gap={6}
+          >
+            {filteredEmpDetails.map((item) => (
+              <Card
+                direction={{ base: "column", md: "column", sm: "row" }}
+                overflow="hidden"
+                variant="outline"
+                key={item.empId}
+                id="empcard"
+                style={{ backgroundColor: "rgba(228, 228, 228, 0.699)" }}
+                onClick={() => handleClick(item)}
+              >
+                <div className="profile-image">
+                  <Image
+                    objectFit="cover"
+                    maxW={{ base: "100%", sm: "200px", md: "200px" }}
+                    src={item.profileImg}
+                    alt="profile images"
+                    style={{
+                      borderRadius: "100%",
+                      width: "180px",
+                      height: "180px",
+                    }}
+                  />
+                  <div className="empname">
+                    <Heading size="lg">{item.name}</Heading>{" "}
+                  </div>
                 </div>
-              </div>
 
-              <Stack>
-                <CardBody>
-                  <Grid templateColumns="repeat(2, 2fr)" gap={2}>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">
-                        <strong>EMPLOYEE ID: </strong>
-                      </Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">{item.empId}</Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">
-                        <strong>DESIGNATION: </strong>
-                      </Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">{item.designation}</Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">
-                        <strong>DOB: </strong>
-                      </Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">{item.DOB}</Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">
-                        <strong>TEAM NAME: </strong>
-                      </Text>
-                    </GridItem>
-                    <GridItem w="100%" h="100%">
-                      <Text py="1">{item.teamname}</Text>
-                    </GridItem>
-                  </Grid>
-                </CardBody>
-              </Stack>
-            </Card>
-          ))}
-        </Grid>
-        {employeeCard && (
-          <EmployeeCard
-            setEmployeeCard={setEmployeeCard}
-            setBackdrop={setBackdrop}
-          />
-        )}
-        {backdrop && (
-          <Backdrop
-            setBackdrop={setBackdrop}
-            setEmployeeCard={setEmployeeCard}
-          />
-        )}
+                <Stack>
+                  <CardBody>
+                    <Grid templateColumns="repeat(2, 2fr)" gap={2}>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">
+                          <strong>EMPLOYEE ID: </strong>
+                        </Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">{item.empId}</Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">
+                          <strong>DESIGNATION: </strong>
+                        </Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">{item.designation}</Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">
+                          <strong>DOB: </strong>
+                        </Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">{item.DOB}</Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">
+                          <strong>TEAM NAME: </strong>
+                        </Text>
+                      </GridItem>
+                      <GridItem w="100%" h="100%">
+                        <Text py="1">{item.teamname}</Text>
+                      </GridItem>
+                    </Grid>
+                  </CardBody>
+                </Stack>
+              </Card>
+            ))}
+          </Grid>
+          {employeeCard && (
+            <EmployeeCard
+              setEmployeeCard={setEmployeeCard}
+              setBackdrop={setBackdrop}
+            />
+          )}
+          {backdrop && (
+            <Backdrop
+              setBackdrop={setBackdrop}
+              setEmployeeCard={setEmployeeCard}
+              setAddUserBackDrop={setAddUserBackDrop}
+              setAddUserForm={setAddUserForm}
+            />
+          )}
+          {addUserBackDrop && (
+            <Backdrop
+              setBackdrop={setBackdrop}
+              setEmployeeCard={setEmployeeCard}
+              setAddUserBackDrop={setAddUserBackDrop}
+              setAddUserForm={setAddUserForm}
+            />
+          )}
+          {addUserForm && <Adduser setAddUserBackDrop={setAddUserBackDrop} setAddUserForm={setAddUserForm} />}
+        </div>
       </div>
-    </div>
     </>
   );
 };

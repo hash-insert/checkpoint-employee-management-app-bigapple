@@ -55,7 +55,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  /* Add any other desired styles */
 }
 .submit,.cancel{
   width: fit-content;
