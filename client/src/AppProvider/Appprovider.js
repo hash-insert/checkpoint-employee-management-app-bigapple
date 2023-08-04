@@ -3,11 +3,9 @@ import { createContext, useState } from 'react';
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [homePage, setHomePage] = useState(false);
-  const [loginpage, setLoginPage] = useState(false);
-  const [contact, setContact] = useState(false);
+  const [loggedin,setLoggedin] = useState(false);
   return (
-    <AppContext.Provider value={{ homePage, setHomePage, loginpage, setLoginPage, contact, setContact }}>
+    <AppContext.Provider value={{loggedin,setLoggedin}}>
       {children}
     </AppContext.Provider>
   );

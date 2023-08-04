@@ -27,21 +27,16 @@ const Form = () => {
     e.preventDefault();
     axios.post("http://localhost:9000/login", { email, password }).then((res) => {
       const { accessToken } = res.data;
-
       setToken(res.data)
-   
       const decodedToken = jwt_decode(accessToken);
-   
-      const { role } = decodedToken;
-console.log(role)
-
-    
+      const { role , userid,userName } = decodedToken;
+      console.log(role,userid,userName)
+      localStorage.setItem("Token",JSON.stringify(accessToken));
       if (role === "admin") {
         navigate("/employees");
       } else {
         navigate("/employee/dashboard");
       }
-
      
     });
   };

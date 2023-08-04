@@ -72,7 +72,9 @@
     color: white;
     background-color: purple;
     opacity: 1;
-    animation: bounce 0.5s forwards 
+    transform: scaleY(10px);
+    transition: transform 1s ease;
+    
 }    
 .dropdown-main{
     width: 100%;
