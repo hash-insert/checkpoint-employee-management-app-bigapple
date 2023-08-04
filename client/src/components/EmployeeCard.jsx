@@ -80,7 +80,6 @@ const EmployeeCard = ({ setEmployeeCard, setBackdrop }) => {
         </Stack>
       </Card>
     </div>
-    // </div>
   );
 };
 
