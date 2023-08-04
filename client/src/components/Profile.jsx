@@ -59,31 +59,19 @@ const Profile = () => {
       style={{
         display: "flex",
         margin: "2%",
-        marginTop:"5%",
+        marginTop: "5%",
         justifyContent: "center",
       }}
     >
-      <section
-        style={{
-          width: "100vw",
-          height: "75vh",
-          boxShadow:
-            "rgba(50, 50, 93, 0.25) 0px 0px 15px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
-          borderRadius: "30px",
-        }}
-      >
+      <section className="profile-box">
         {userData.map((user) => (
           <div key={user.userId}>
-            <h3>Hello {user.userId}</h3>
+            <div className="profile-head">
+            <h3 className="userId">{user.userId}</h3>
+            <img className="profile-img" src="https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e1377d4/_orig/pixomatic_1572877223091.png" alt="Random image" />
+            </div>
             {update ? (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "auto auto",
-                  columnGap: "1vw",
-                  rowGap: "2vh",
-                  padding: "3vw",
-                }}
+              <div className="update-form"
               >
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Employee Name:
@@ -139,49 +127,41 @@ const Profile = () => {
                 />
               </div>
             ) : (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "auto auto",
-                  columnGap: "1vw",
-                  rowGap: "2vh",
-                  padding: "3vw",
-                }}
-              >
+              <div className="display-form">
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Employee Name:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.userName}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Designation:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.designation}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Email:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.email}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Date of Birth:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.DOB}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Phone number:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.phone}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Number of Leaves:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.NoOfLeaves}
                 </span>
               </div>
@@ -191,8 +171,12 @@ const Profile = () => {
         <div className="updateProfile">
           {update ? (
             <div className="buttonContainer">
-              <button className="submit" onClick={handleSubmit}>Submit</button>
-              <button className="cancel" onClick={handleCancel}>Cancel</button>
+              <button className="submit" onClick={handleSubmit}>
+                Submit
+              </button>
+              <button className="cancel" onClick={handleCancel}>
+                Cancel
+              </button>
             </div>
           ) : (
             <button onClick={handleUpdate} className="updateButton">
