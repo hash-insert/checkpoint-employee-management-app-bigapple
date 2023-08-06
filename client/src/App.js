@@ -12,13 +12,16 @@ import jwt_decode from "jwt-decode";
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [role, setRole] = useState("");
+  const [userid, setUserId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     const usertoken = localStorage.getItem("Token");
     if (usertoken) {
       const decodedToken = jwt_decode(usertoken);
       setRole(decodedToken.role);
+      setUserId(decodedToken.userid);
       setIsLoggedin(true);
+      console.log(decodedToken);
     } else {
       // If no token, redirect to the login page
       setTimeout(()=>{
@@ -27,6 +30,7 @@ function App() {
       },20000)
     }
   }, []);
+  console.log(userid)
   return (
     <AppProvider>
       <Routes>
@@ -35,14 +39,14 @@ function App() {
             {role === "admin" && (
               <>
                 <Route path="/employees" element={<EmployeePage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={<ProfilePage value={userid} />} />
                 <Route path='/Calendar' element={<LargeCalendar />} />
                 <Route path="/timesheetadmin" element={<TimeSheetsAdmin />} />
               </>
             )}
             {role === "employee" && (
               <>
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={<ProfilePage value={userid} />} />
               </>
             )}
           </>

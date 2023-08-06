@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Update from "./Update";
 import { useState } from "react";
 import "../css/profile.css";
-
-const Profile = () => {
-  const [userName, setUserName] = useState("");
+const APIBASE = "http://localhost:9000";
+const Profile = (props) => {
+  const [userdata, setUserdata] = useState(false);
+  const [userData, setUserData] = useState([]);
   const [updateData, setUpdateData] = useState({
-    username: "",
+    userName: "",
     designation: "",
     email: "",
-    dateOfBirth: "",
+    DOB: "",
     phone: "",
   });
-  const [userData, setUserData] = useState([
-    {
-      userId: "Hash320",
-      userName: "Nikhil",
-      designation: "Software Engineer",
-      email: "hash123@gmail.com",
-      DOB: "15-09-1996",
-      phone: 9496781523,
-      NoOfLeaves: 0,
-    },
-  ]);
+  useEffect(()=>{
+    getProfile();
+  },[userdata]);
+  const Userid = props.value;
+console.log(props)
+ const getProfile = async () =>{
+      const res = await fetch(APIBASE+`/userById/${Userid}`,{
+        method:"GET",
+        headers:{
+          "Content-Type":"application/json"
+        }
+      });
+      const data = await res.json();
+      setUserData(data);
+  }
   const [update, setUpdate] = useState(false);
 
   const handleUpdate = () => {
@@ -32,16 +37,30 @@ const Profile = () => {
   const handleCancel = () => {
     setUpdate(false);
     setUpdateData({
-      username: "",
+      userName: "",
       designation: "",
       email: "",
-      dateOfBirth: "",
+      DOB: "",
       phone: "",
     });
   };
 
-  const handleSubmit = () => {
-    console.log(userName);
+  const handleSubmit = async() => {
+    const newObject = Object.entries(updateData).reduce((acc, [key, value]) => {
+      if (value && value.trim() !== "") {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
+    const res = await fetch(APIBASE+`/updateUser/${Userid}`,{
+      method : "PUT",
+      headers : {
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify(newObject)
+    })
+    setUserdata(true);
+    handleCancel();
   };
 
   console.log(updateData);
@@ -58,8 +77,8 @@ const Profile = () => {
     <div
       style={{
         display: "flex",
-        margin: "2%",
-        marginTop: "5%",
+        margin:"2%",
+        marginTop:"2%",
         justifyContent: "center",
       }}
     >
@@ -67,7 +86,7 @@ const Profile = () => {
         {userData.map((user) => (
           <div key={user.userId}>
             <div className="profile-head">
-            <h3 className="userId">{user.userId}</h3>
+            <h3 className="userId">{user.userName}-{user.userId}</h3>
             <img className="profile-img" src="https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e1377d4/_orig/pixomatic_1572877223091.png" alt="Random image" />
             </div>
             {update ? (
@@ -79,8 +98,8 @@ const Profile = () => {
                 <input
                   className="updateData"
                   placeholder="Enter the Name"
-                  name="username"
-                  value={updateData.username}
+                  name="userName"
+                  value={updateData.userName}
                   onChange={handleChange}
                 />
                 <span className="staticData" style={{ textAlign: "left" }}>
@@ -110,8 +129,8 @@ const Profile = () => {
                 <input
                   type="date"
                   className="updateData"
-                  name="dateOfBirth"
-                  value={updateData.dateOfBirth}
+                  name="DOB"
+                  value={updateData.DOB}
                   onChange={handleChange}
                 />
                 <span className="staticData" style={{ textAlign: "left" }}>
@@ -162,7 +181,7 @@ const Profile = () => {
                   Number of Leaves:
                 </span>
                 <span className="dynamic" >
-                  {user.NoOfLeaves}
+                  {user.noOfLeaves}
                 </span>
               </div>
             )}
