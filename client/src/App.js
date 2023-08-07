@@ -13,6 +13,7 @@ function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [role, setRole] = useState("");
   const [userid, setUserId] = useState("");
+  const [timesheetsdata,setTimesheetsData] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     const usertoken = localStorage.getItem("Token");
@@ -40,8 +41,8 @@ function App() {
               <>
                 <Route path="/employees" element={<EmployeePage />} />
                 <Route path="/profile" element={<ProfilePage value={userid} />} />
-                <Route path='/Calendar' element={<LargeCalendar />} />
-                <Route path="/timesheetadmin" element={<TimeSheetsAdmin />} />
+                <Route path='/Calendar' element={<LargeCalendar value={setTimesheetsData} />} />
+                <Route path="/timesheetadmin" element={<TimeSheetsAdmin value={timesheetsdata} />} />
               </>
             )}
             {role === "employee" && (

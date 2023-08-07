@@ -1,7 +1,9 @@
 import React from 'react';
 import "../css/TimesheetAdmin.css"
 import NavbarUser from '../components/Navbar/NavbarUser';
-export default function TimeSheetsAdmin() {
+export default function TimeSheetsAdmin(props) {
+  const timesheetsdata = props.value;
+  console.log(timesheetsdata);
     const obj = [
         {
           userId:"072355",
@@ -48,12 +50,10 @@ export default function TimeSheetsAdmin() {
               <h5>Feature:-</h5>
               <p>{item.feature}</p>
               </div>
-            {
-            /* <div className='tagpclass'>
+            <div className='tagpclass'>
               <h5>Status:-</h5>
               <p>{item.status}</p>
-              </div> */
-              }
+              </div>
             <div className='tagpclass'>
               For timesheets screenshoots click&nbsp; 
               <a style={{color:"#9d72b3"}} href='/'>Here.</a>

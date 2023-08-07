@@ -17,7 +17,7 @@ const Profile = (props) => {
     getProfile();
   },[userdata]);
   const Userid = props.value;
-console.log(props)
+  
  const getProfile = async () =>{
       const res = await fetch(APIBASE+`/userById/${Userid}`,{
         method:"GET",

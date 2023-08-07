@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import "./Calender.css";
 
-
-export default class Calendar extends React.Component {
-  calendarComponentRef = React.createRef();
-  render() {
-    return (
-      <div>
-          <FullCalendar 
-            plugins={[dayGridPlugin, interactionPlugin]}
-            ref={this.calendarComponentRef}
-            dateClick={this.handleDateClick}
-            headerToolbar={{
-              left: "title",
-              right: "today prev,next prevYear,nextYear",
-            }}
-          />
-      </div>
-    );
-  }
-  handleDateClick = (arg) => {
+const Calendar = (props) => {
+  const navigate = useNavigate();
+  const calendarComponentRef = useRef(null);
+  const setTimesheetsData = props.value;
+  const handleDateClick = (arg) => {
+    setTimesheetsData(arg.dateStr);
+    navigate('/timesheetadmin');
     console.log(arg.dateStr);
   };
-}
+
+  return (
+    <div>
+      <FullCalendar
+        plugins={[dayGridPlugin, interactionPlugin]}
+        ref={calendarComponentRef}
+        dateClick={handleDateClick}
+        headerToolbar={{
+          left: "title",
+          right: "today prev,next prevYear,nextYear",
+        }}
+      />
+    </div>
+  );
+};
+
+export default Calendar;
