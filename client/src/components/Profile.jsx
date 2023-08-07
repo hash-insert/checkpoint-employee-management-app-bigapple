@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Update from "./Update";
 import { useState } from "react";
 import "../css/profile.css";
-
-const Profile = () => {
-  const [userName, setUserName] = useState("");
+const APIBASE = "http://localhost:9000";
+const Profile = (props) => {
+  const [userdata, setUserdata] = useState(false);
+  const [userData, setUserData] = useState([]);
   const [updateData, setUpdateData] = useState({
-    username: "",
+    userName: "",
     designation: "",
     email: "",
-    dateOfBirth: "",
+    DOB: "",
     phone: "",
   });
-  const [userData, setUserData] = useState([
-    {
-      userId: "Hash320",
-      userName: "Nikhil",
-      designation: "Software Engineer",
-      email: "hash123@gmail.com",
-      DOB: "15-09-1996",
-      phone: 9496781523,
-      NoOfLeaves: 0,
-    },
-  ]);
+  useEffect(()=>{
+    getProfile();
+  },[userdata]);
+  const Userid = props.value;
+console.log(props)
+ const getProfile = async () =>{
+      const res = await fetch(APIBASE+`/userById/${Userid}`,{
+        method:"GET",
+        headers:{
+          "Content-Type":"application/json"
+        }
+      });
+      const data = await res.json();
+      setUserData(data);
+  }
   const [update, setUpdate] = useState(false);
 
   const handleUpdate = () => {
@@ -32,16 +37,30 @@ const Profile = () => {
   const handleCancel = () => {
     setUpdate(false);
     setUpdateData({
-      username: "",
+      userName: "",
       designation: "",
       email: "",
-      dateOfBirth: "",
+      DOB: "",
       phone: "",
     });
   };
 
-  const handleSubmit = () => {
-    console.log(userName);
+  const handleSubmit = async() => {
+    const newObject = Object.entries(updateData).reduce((acc, [key, value]) => {
+      if (value && value.trim() !== "") {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
+    const res = await fetch(APIBASE+`/updateUser/${Userid}`,{
+      method : "PUT",
+      headers : {
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify(newObject)
+    })
+    setUserdata(true);
+    handleCancel();
   };
 
   console.log(updateData);
@@ -58,32 +77,20 @@ const Profile = () => {
     <div
       style={{
         display: "flex",
-        margin: "2%",
-        marginTop:"5%",
+        margin:"2%",
+        marginTop:"2%",
         justifyContent: "center",
       }}
     >
-      <section
-        style={{
-          width: "100vw",
-          height: "75vh",
-          boxShadow:
-            "rgba(50, 50, 93, 0.25) 0px 0px 15px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
-          borderRadius: "30px",
-        }}
-      >
+      <section className="profile-box">
         {userData.map((user) => (
           <div key={user.userId}>
-            <h3>Hello {user.userId}</h3>
+            <div className="profile-head">
+            <h3 className="userId">{user.userName}-{user.userId}</h3>
+            <img className="profile-img" src="https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e1377d4/_orig/pixomatic_1572877223091.png" alt="Random image" />
+            </div>
             {update ? (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "auto auto",
-                  columnGap: "1vw",
-                  rowGap: "2vh",
-                  padding: "3vw",
-                }}
+              <div className="update-form"
               >
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Employee Name:
@@ -91,8 +98,8 @@ const Profile = () => {
                 <input
                   className="updateData"
                   placeholder="Enter the Name"
-                  name="username"
-                  value={updateData.username}
+                  name="userName"
+                  value={updateData.userName}
                   onChange={handleChange}
                 />
                 <span className="staticData" style={{ textAlign: "left" }}>
@@ -122,8 +129,8 @@ const Profile = () => {
                 <input
                   type="date"
                   className="updateData"
-                  name="dateOfBirth"
-                  value={updateData.dateOfBirth}
+                  name="DOB"
+                  value={updateData.DOB}
                   onChange={handleChange}
                 />
                 <span className="staticData" style={{ textAlign: "left" }}>
@@ -139,50 +146,42 @@ const Profile = () => {
                 />
               </div>
             ) : (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "auto auto",
-                  columnGap: "1vw",
-                  rowGap: "2vh",
-                  padding: "3vw",
-                }}
-              >
+              <div className="display-form">
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Employee Name:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.userName}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Designation:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.designation}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Email:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.email}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Date of Birth:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.DOB}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Phone number:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
+                <span className="dynamic" >
                   {user.phone}
                 </span>
                 <span className="staticData" style={{ textAlign: "left" }}>
                   Number of Leaves:
                 </span>
-                <span className="dynamic" style={{ textAlign: "left" }}>
-                  {user.NoOfLeaves}
+                <span className="dynamic" >
+                  {user.noOfLeaves}
                 </span>
               </div>
             )}
@@ -191,8 +190,12 @@ const Profile = () => {
         <div className="updateProfile">
           {update ? (
             <div className="buttonContainer">
-              <button className="submit" onClick={handleSubmit}>Submit</button>
-              <button className="cancel" onClick={handleCancel}>Cancel</button>
+              <button className="submit" onClick={handleSubmit}>
+                Submit
+              </button>
+              <button className="cancel" onClick={handleCancel}>
+                Cancel
+              </button>
             </div>
           ) : (
             <button onClick={handleUpdate} className="updateButton">

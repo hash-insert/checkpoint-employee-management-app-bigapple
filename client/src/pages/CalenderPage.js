@@ -3,6 +3,7 @@ import "../css/Calenderpage.css";
 import Calendar from '../Calender/Calender.jsx';
 // import { AppContext } from '../AppProvider/Appprovider';
 import { useNavigate } from 'react-router-dom';
+import NavbarUser from "../components/Navbar/NavbarUser"
 
 export default function CalenderPage() {
 const navigate = useNavigate();
@@ -11,7 +12,7 @@ const navigate = useNavigate();
 
     return (
         <>
-            <h5>TimeSheets</h5>
+            <NavbarUser/>
             <div className='timesheetroutes'>
                 <span style={{ backgroundColor: "lightgreen" }} onClick={()=>navigate('/timesheetadmin')}>Approved</span>
                 <span style={{ backgroundColor: "#bba8ff" }}>Pending</span>

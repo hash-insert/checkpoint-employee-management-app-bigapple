@@ -1,8 +1,13 @@
 import React from 'react'
 import Profile from '../components/Profile'
-const ProfilePage = () => {
+import NavbarUser from "../components/Navbar/NavbarUser.js";
+const ProfilePage = (props) => {
+  const userid = props.value;
   return (
-    <Profile />
+    <>
+    <NavbarUser/>
+    <Profile value={userid}/>
+    </>
   )
 }
 

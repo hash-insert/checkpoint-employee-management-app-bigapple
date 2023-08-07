@@ -2,29 +2,69 @@
   font-weight: 500;
 }
 .dynamic {
-  border: 1px solid #cbcbcb;
-  border-radius: 10px;
   padding: 6px 10px;
+  text-align: left;
+  border-bottom: 2px solid transparent;
+  /* border-image: linear-gradient(
+    0.25turn,
+    rgb(255, 255, 255),
+    rgb(226, 226, 226),
+    rgba(255, 255, 255, 0)
+  );
+  border-image-slice: 1; */
+  border-bottom: 1px solid rgb(225, 223, 223);
 }
-
+.profile-box {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 15px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 50%;
+  height: max-content;
+  border-radius: 30px;
+}
+.profile-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgb(255, 255, 255),
+    rgb(160, 157, 157),
+    rgba(56, 2, 155, 0)
+  );
+  border-image-slice: 1;
+}
+.profile-img {
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 3vw;
+  /* margin-top: 2vh; */
+  width: 80px;
+  height: 80px;
+}
+.userId {
+  margin-top: 2vh;
+  margin-left: 3vw;
+}
 .updateProfile {
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
   margin-right: 3vw;
 }
-.updateButton{
-    width: fit-content;
-    background-color: #C9A8F1;
-    height: 35px;
-    border: 1px solid #a5a5a5;
-    border-radius: 10px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px 0px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    
+.updateButton {
+  width: 80px;
+  background-color: #c9a8f1;
+  height: 35px;
+  border: 1px solid #a5a5a5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px 0px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
-.updateButton:hover{
+.updateButton:hover {
   transform: translateY(-3px);
 }
 .updateData:focus {
@@ -36,6 +76,7 @@
   border: 1px solid #a5a5a5;
   border-radius: 10px;
   height: 40px;
+  padding: 10px;
 }
 input:-webkit-autofill {
   -webkit-text-fill-color: black !important;
@@ -51,37 +92,109 @@ input[type="date"] {
   align-items: center;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background-image: url('../svgs/calendar.svg');
+  background-image: url("../svgs/calendar.svg");
   width: 20px;
   height: 20px;
   cursor: pointer;
-  /* Add any other desired styles */
 }
-.submit,.cancel{
-  width: fit-content;
+.submit,
+.cancel {
+  width: 80px;
   height: 35px;
   border: 1px solid #a5a5a5;
   border-radius: 10px;
+  margin-bottom: 10px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px 0px;
 }
-.submit{
+.submit {
   background-color: rgb(104, 202, 104);
   cursor: pointer;
   margin-right: 10px;
   transition: transform 0.3s ease;
 }
-.submit:hover,.cancel:hover{
+.submit:hover,
+.cancel:hover {
   transform: translateY(-3px);
 }
-.cancel{
+.cancel {
   background-color: rgb(245, 165, 165);
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-.buttonContainer{
+.buttonContainer {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
   justify-content: space-between !important;
-  align-items: end ;
+  align-items: end;
+}
+.display-form,
+.update-form {
+  display: grid;
+  grid-template-columns: repeat(2, 6fr);
+  column-gap: 1vw;
+  row-gap: 2vh;
+  padding: 3vw;
+}
+
+@media screen and (max-width: 420px) {
+  .update-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5vh;
+  }
+  .profile-box {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 15px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    width: 90%;
+    height: max-content;
+    position: absolute;
+    top: 15vh;
+    border-radius: 30px;
+  }
+  .updateButton {
+    margin-right: 10px;
+    width: 80px;
+  }
+  .updateData {
+    width: 100%;
+  }
+}
+@media screen and (min-width:420px) and (max-width:600px){
+  .update-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5vh;
+  }
+  .profile-box {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 15px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    width: 90%;
+    height: max-content;
+    position: absolute;
+    top: 15vh;
+    border-radius: 30px;
+  }
+  .updateData {
+    width: 100%;
+  }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+  .update-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5vh;
+  }
+  .profile-box {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 15px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    width: 90%;
+    height: max-content;
+    position: absolute;
+    top: 10vh;
+    border-radius: 30px;
+  }
+  .updateData {
+    width: 100%;
+  }
 }
