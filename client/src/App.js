@@ -7,7 +7,7 @@ import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
 import Login from "./pages/login.jsx";
 import TimeSheetsAdmin from './pages/TimeSheetsAdmin.js';
-import EmployeePage from './pages/employees.jsx';
+import Timesheets from "./pages/TimesheetsEmployee/Timesheets";import EmployeePage from './pages/employees.jsx';
 import jwt_decode from "jwt-decode";
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -32,30 +32,15 @@ function App() {
   }, []);
   console.log(userid)
   return (
-    <AppProvider>
-      <Routes>
-        {isLoggedin && (
-          <>
-            {role === "admin" && (
-              <>
-                <Route path="/employees" element={<EmployeePage />} />
-                <Route path="/profile" element={<ProfilePage value={userid} />} />
-                <Route path='/Calendar' element={<LargeCalendar />} />
-                <Route path="/timesheetadmin" element={<TimeSheetsAdmin />} />
-              </>
-            )}
-            {role === "employee" && (
-              <>
-                <Route path="/profile" element={<ProfilePage value={userid} />} />
-              </>
-            )}
-          </>
-        )}
-        {/* Redirect to login if not logged in */}
-        <Route path="/" element={<HomePage/>}></Route>
-        <Route path="/login" element={<Login/>}/>
-      </Routes>
-    </AppProvider>
+      <AppProvider>
+        <Routes >
+          <Route path='/' element={<HomePage />}></Route>
+          <Route path='/Calendar' element={<LargeCalendar />}></Route>
+          <Route path="/profile" element={<ProfilePage />} ></Route>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/timesheetadmin" element={<TimeSheetsAdmin/>}></Route>
+        </Routes>
+      </AppProvider>
   );
 }
 export default App;
