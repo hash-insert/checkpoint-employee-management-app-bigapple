@@ -26,14 +26,14 @@ export default function TimeSheetsAdmin() {
         },
     ]
   return (
-    <>
+    <> 
     <NavbarUser/>
     <div className='timesheetmain'>
         { obj.map((item)=>
           <div className='cardsheet'>
-            <div className='cardheader'>
+            <div className='cardheader'>                                                                  
             <h5>{item.date}</h5>
-            <h5>Productive_Hrs:{item.productive_hrs}</h5>
+            <h5>Productive Hrs:-{item.productive_hrs}</h5>
             </div>
         <div className='insidecard'>
             <div className='tagpclass'>
@@ -48,10 +48,12 @@ export default function TimeSheetsAdmin() {
               <h5>Feature:-</h5>
               <p>{item.feature}</p>
               </div>
-            {/* <div className='tagpclass'>
+            {
+            /* <div className='tagpclass'>
               <h5>Status:-</h5>
               <p>{item.status}</p>
-              </div> */}
+              </div> */
+              }
             <div className='tagpclass'>
               For timesheets screenshoots click&nbsp; 
               <a style={{color:"#9d72b3"}} href='/'>Here.</a>

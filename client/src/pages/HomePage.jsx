@@ -21,12 +21,7 @@ export const HomePage = () => {
         <div className="heading-container">
           <h5 style={{textAlign:"left"}}>EMPLOYEE MANAGEMENT APP</h5>
           <p className="content">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+          Our Employee Management App is a powerful tool designed to help you streamline and organize your workforce effortlessly. With our user-friendly interface and comprehensive features, managing your employees has never been easier.
           </p>
         </div>
         <div className="svg-container">

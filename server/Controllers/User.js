@@ -38,7 +38,7 @@ export const addUser = async (req, res) => {
         password
       );
 
-      await admin.auth().setCustomUserClaims(userCredential.user.uid, { role });
+      await admin.auth().setCustomUserClaims(userCredential.user.uid, { role , userid , userName});
  
 
     let saltRounds = 5;
