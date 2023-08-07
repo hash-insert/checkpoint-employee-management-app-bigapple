@@ -2,32 +2,32 @@ import mongoose from "mongoose";
 
 const TimesheetSchema = mongoose.Schema(
   {
-    empId: {
+    userId: {
       type: String,
-      required: true,
+      required: false,
     },
     empName: {
       type: String,
-      required: true,
+      required: false,
     },
     projectName: {
       type: String,
-      required: true,
+      required: false,
     },
     feature: {
       type: String,
-      required: true,
+      required: false,
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
-    productiveHrs: {
+    productive: {
       type: Number,
-      required: true,
+      required: false,
     },
     screenshots: {
-      type: Buffer,
+      type:[String],
       required: false,
     },
     status: {

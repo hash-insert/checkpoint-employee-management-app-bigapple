@@ -6,7 +6,7 @@ import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
 import Login from "./pages/login.jsx"
 import TimeSheetsAdmin from './pages/TimeSheetsAdmin.js';
-
+import Timesheets from "./pages/TimesheetsEmployee/Timesheets";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} ></Route>
           <Route path="/login" element={<Login />}/>
           <Route path="/timesheetadmin" element={<TimeSheetsAdmin/>}></Route>
+          <Route path="/timesheet" element={<Timesheets />}></Route>
         </Routes>
       </AppProvider>
   );

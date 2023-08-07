@@ -1,4 +1,75 @@
 import TimeSheet from "../Models/Timesheets.js";
+
+export const getTimesheets=async(req,res,next)=>{
+  try{
+  const id=req.params.id;
+  const time=await TimeSheet.findById({userId:id});
+  res.send(time);
+  }
+  catch(err)
+  {
+      res.status(404).send(err);
+  }
+}
+
+export const getallTimesheets=async(req,res,next)=>{
+  try{
+  const time=await TimeSheet.find();
+  res.send(time);
+  }
+  catch(err)
+  {
+      res.status(404).send(err);
+  }
+}
+
+export const addTimesheets=async(req,res,next)=>{
+  
+  try{
+     const userId=req.body.userId;
+     const empName=req.body.empName;
+     const feature= req.body.feature;
+     const description=req.body.description;
+     const productive=req.body.productive;
+     const screenshots=req.body.screenshots;
+     const status=req.body.status;
+     console.log(screenshots)
+     const time=await TimeSheet.create({
+      userId:userId,
+      empName:empName,
+      feature:feature,
+      description:description,
+      productive:productive,
+      screenshots:screenshots,
+      status:status
+      
+     })
+
+     res.status(200).send(req.body);
+
+  }
+
+  catch(err){
+      console.log("the error is ",err);
+      res.status(400).json({error:err})
+  }
+}
+
+export const updatebyemployee=async(req,res,next)=>{
+
+  try{
+      const _id=req.params.id;
+      console.log(_id);
+      const updated=await TimeSheet.findByIdAndUpdate(_id,req.body);
+
+      res.send(updated);
+  }
+  catch(err)
+  {
+      res.json({error:err})
+  }
+}
+
 export const getPendingEmployeeTimeSheets = async (req, res) => {
   try {
     const pendingTimeSheets = await TimeSheet.find({ status: "pending" });
