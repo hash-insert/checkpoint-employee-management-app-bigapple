@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import bodyParser from 'body-parser'
 import userRoute from "./Routes/User.js"
 import teamsRoute from "./Routes/Teams.js"
+import leavesRoute from "./Routes/Leaves.js"
 import timesheets from "./Routes/TImesheets.js"
 
 const app = express();
@@ -17,10 +18,12 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
 
-app.use("/",userRoute)
+app.use("/", userRoute)
+
 app.use("/admin/teams",teamsRoute)
 app.use("/auth",timesheets)
 
+app.use("/empLeave",leavesRoute)
 app.get("/",(req,res)=> {
     res.send("welcome to login")
 })

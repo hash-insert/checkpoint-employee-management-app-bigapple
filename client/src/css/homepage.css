@@ -35,7 +35,7 @@
     text-align: left;
     background: -webkit-linear-gradient(45deg,#b711f9,purple);
     font-family: 'Jost', sans-serif;
-  -webkit-background-clip: text;
+     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
   width: 325px;

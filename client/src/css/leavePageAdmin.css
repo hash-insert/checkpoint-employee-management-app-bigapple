@@ -1,0 +1,33 @@
+.leave-page-admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.leave-cards-container {
+  display: grid;
+  width: 90%;
+  grid-template-columns: repeat(3,30%);
+  gap: 40px;
+ 
+}
+
+@media (max-width: 1024px) {
+  .leave-cards-container {
+    grid-template-columns: repeat(3,1fr); 
+  }
+}
+
+@media (max-width: 900px) {
+  .leave-cards-container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 600px) {
+  .leave-cards-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+

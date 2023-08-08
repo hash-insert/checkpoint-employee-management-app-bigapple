@@ -47,7 +47,7 @@ export default function NavbarUser() {
               <span className={userrole?"showemployees":"showemployee"} >Teams</span>
               <span className={userrole?"showemployees":"showemployee"} onClick={() => navigate("/employees")} >Employees</span>
               <span onClick={() => navigate("/calendar")} >Timesheeet</span>
-              <span >Leaves</span>
+              <span onClick={() =>{userrole?navigate("/leaveadmin"):navigate("/leaveemployee")}}  >Leaves</span>
             </div>
             <div>
             <MdAccountCircle onClick={()=>setDropdown(!dropdown)} className='ProfileLogo' />

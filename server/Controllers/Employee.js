@@ -1,13 +1,16 @@
 import Leaves from "../Models/Leaves.js";
-// getEmpLeave
-// postEmpLeave
-// updateEmpLeave
-// deleteEmpLeave
-// updateLeave
-export const getEmpLeave = async (req, res) => {
+ const getEmpLeave = async (req, res) => {
   try {
     const userId = req.params.userId;
     const leaves = await Leaves.find({ userId: userId });
+    res.status(200).json(leaves);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to get leaves" });
+  }
+};
+const getEmpLeavePending = async (req, res) => {
+  try {
+    const leaves = await Leaves.find({ LeaveStatus: "pending" });
     res.status(200).json(leaves);
   } catch (error) {
     res.status(500).json({ message: "Failed to get leaves" });
@@ -71,13 +74,14 @@ const deleteEmpLeave = async (req, res) => {
 };
 
 const updateLeave = async (req, res) => {
-  const { leaveId, leaveStatus } = req.body;
+  const leaveId = req.params.id;
+  const { LeaveStatus } = req.body;
 
   try {
     const leave = await Leaves.findByIdAndUpdate(
       leaveId,
       {
-        $set: { LeaveStatus: leaveStatus },
+        $set: { LeaveStatus: LeaveStatus },
       },
       { new: true }
     );
@@ -98,4 +102,5 @@ export {
   updateEmpLeave,
   deleteEmpLeave,
   updateLeave,
+  getEmpLeavePending,
 };

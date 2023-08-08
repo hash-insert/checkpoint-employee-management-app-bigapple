@@ -1,0 +1,38 @@
+
+.leave-info-cards-container {
+  display: grid;
+  width:80%;
+  grid-template-columns: repeat(2, 1fr); 
+  justify-content: center;
+  align-items: center;
+  margin: 2% auto;
+  gap: 20px;
+}
+
+.leave-info-card {
+  border-radius: 8px;
+  padding: 2%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 2%;
+}
+
+@media (max-width: 600px) {
+  .leave-info-cards-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.rejected {
+  background-color: #f8a5a5; /* Light red */
+  box-shadow: #ffcccc 0px 2px 8px 0px;
+}
+
+.pending {
+  background-color: #c9a8f1 ; /* Light purple */
+  box-shadow: #c9a8f1 0px 2px 8px 0px;
+}
+
+.approved {
+  background-color: #bdeabd; /* Light green */
+  box-shadow: #ccffcc 0px 2px 8px 0px;
+}
