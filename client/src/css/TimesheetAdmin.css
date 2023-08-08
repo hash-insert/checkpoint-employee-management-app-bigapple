@@ -51,6 +51,13 @@
     padding: 1%;
     border-radius: 10px;
 }
+.EmptyTimesheets{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 97%;
+}
 @media screen and (max-width:850px){
     .timesheetmain{
         grid-template-columns: 1fr;

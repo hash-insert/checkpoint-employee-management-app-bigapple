@@ -14,7 +14,7 @@ function TimeForm({setOpenModel,setObjs}) {
     {
       console.log('image')
 
-      axios.post('http://localhost:5000/auth/timesheet',
+      axios.post('http://localhost:9000/auth/timesheet',
       {
       feature:feature,
       description:description,
@@ -39,27 +39,27 @@ function TimeForm({setOpenModel,setObjs}) {
     
     return (
       <div className="TimesheetEmployee">
-       <div className='form'>
-        <h1 cla>Time sheet</h1>
+       <div className='timesheetform'>
+        <h1 className='textheading'>Time sheet</h1>
         
-        <label >Feature</label>
+        <label className='timesheetslabel' >Feature</label>
         <br></br>
-        <input type='text' onChange={(e)=>setFeature(e.target.value)}></input>
+        <input className='timesheetinputs' type='text' onChange={(e)=>setFeature(e.target.value)}></input>
         <br></br>
-        <label >Description</label>
+        <label className='timesheetslabel' >Description</label>
         <br></br>
-        <input type='text' onChange={(e)=>setDescription(e.target.value)}></input>
+        <input className='timesheetinputs' type='text' onChange={(e)=>setDescription(e.target.value)}></input>
         <br></br>
-        <label >Productive hours</label>
+        <label className='timesheetslabel' >Productive hours</label>
         <br></br>
-        <input type='Number' onChange={(e)=>setTime(e.target.value)}></input>
+        <input className='timesheetinputs' type='Number' onChange={(e)=>setTime(e.target.value)}></input>
         <br></br>
-        <input accept='image/*' type='file' onChange={convert} />
+        <input className='timesheetinputs' accept='image/*' type='file' onChange={convert} />
         <br></br>
-        <label >Status</label>
+        <label className='timesheetslabel' >Status</label>
         <br></br>
-        <input type='text' onChange={(e)=>setStatus(e.target.value)}></input>
-        <button onClick={()=>add()}>submit</button>
+        <input className='timesheetinputs' type='text' onChange={(e)=>setStatus(e.target.value)}></input>
+        <button className='timesheetbutton' onClick={()=>add()}>submit</button>
        </div>
        
        

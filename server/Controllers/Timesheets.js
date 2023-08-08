@@ -80,8 +80,7 @@ export const getPendingEmployeeTimeSheets = async (req, res) => {
 };
 export const saveTimesheets = async (req, res) => {
   try {
-    const { empId, empName, projectName, feature, description, productiveHrs } =
-      req.body;
+    const { empId, empName, projectName, feature, description, productiveHrs,date } = req.body;
     const timeSheetObj = {
       empId: empId,
       empName: empName,
@@ -89,6 +88,7 @@ export const saveTimesheets = async (req, res) => {
       feature: feature,
       description: description,
       productiveHrs: productiveHrs,
+      date:date,
     };
     const newTimeSheet = new TimeSheet(timeSheetObj);
     await newTimeSheet.save();
@@ -171,3 +171,15 @@ export const rejectedTimeSheets = async (req, res) => {
       .json("Error while getting rejected Timesheets of employee" + err);
   }
 };
+
+export const TimesheetbyDate = async (req,res) => {
+  try{
+    const date = req.params.date
+    const empTimesheetsbydate = await TimeSheet.find({date:date})
+    res.status(200).json(empTimesheetsbydate);
+  } catch (err){
+    res
+      .status(500)
+      .json("Error while getting Timesheets of employee" + err);
+  }
+}

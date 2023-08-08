@@ -10,7 +10,7 @@ const Calendar = (props) => {
   const calendarComponentRef = useRef(null);
   const setTimesheetsData = props.value;
   const handleDateClick = (arg) => {
-    setTimesheetsData(arg.dateStr);
+    setTimesheetsData("/getTimesheetbyDate/"+arg.dateStr);
     navigate('/timesheetadmin');
     console.log(arg.dateStr);
   };

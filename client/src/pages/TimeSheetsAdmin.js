@@ -1,50 +1,54 @@
-import React from 'react';
-import "../css/TimesheetAdmin.css"
+import React, { useEffect, useState } from 'react';
+import "../css/TimesheetAdmin.css";
 import NavbarUser from '../components/Navbar/NavbarUser';
+
+const APIBASE = "http://localhost:9000";
+
 export default function TimeSheetsAdmin(props) {
+  const [resobj, setResObj] = useState([]);
   const timesheetsdata = props.value;
   console.log(timesheetsdata);
-    const obj = [
-        {
-          userId:"072355",
-          userName:"TharunGoud",
-          date:"23-7-2023",
-          productive_hrs:"8hrs",
-          project:"Employee management app",
-          feature:"worked on the add, update, delete timesheet for employee",
-          description:"work on add, update, delete timesheet for employee",
-          status:"approved"
-          // screenshoots:[]
-        },{
-          userId:"072359",
-          userName:"nikhil",
-          date:"29-7-2023",
-          productive_hrs:"8hrs",
-          project:"Employee management app",
-          feature:"worked on the add, update, delete employee for employee-listing",
-          description:"work on add, update, delete timesheet for employee",
-          status:"approved"
-          // screenshoots:[]
-        },
-    ]
+  useEffect(()=>{
+    getTimesheets();
+  },[timesheetsdata])
+
+  const getTimesheets = async() =>{
+    
+    const res = await fetch(APIBASE+`/auth/${timesheetsdata}`,{
+      method:"GET",
+      headers:{
+        "Content-Type":"application/json"
+      }
+    })
+    const obj = await res.json();
+    setResObj(obj)
+    console.log(obj)
+  }
+  
   return (
     <> 
     <NavbarUser/>
+    {(resobj.length===0)?
+    <div className='EmptyTimesheets'>
+        <h5>There are no timesheets for the time being comeback later.</h5>
+        <img src='/TimesheetsSVG.svg' alt='TimesheetsSVG.svg'/>
+    </div>
+    :
     <div className='timesheetmain'>
-        { obj.map((item)=>
+        { resobj.map((item)=>
           <div className='cardsheet'>
             <div className='cardheader'>                                                                  
             <h5>{item.date}</h5>
-            <h5>Productive Hrs:-{item.productive_hrs}</h5>
+            <h5>Productive Hrs:-{item.productiveHrs}</h5>
             </div>
         <div className='insidecard'>
             <div className='tagpclass'>
               <h5>Employee:-</h5>
-              <p>{item.userName}-{item.userId}</p>
+              <p>{item.empName}-{item.empId}</p>
               </div>
             <div className='tagpclass'>
               <h5>Project:-</h5>
-              <p>{item.project}</p>
+              <p>{item.projectName}</p>
               </div>
             <div className='tagpclass'>
               <h5>Feature:-</h5>
@@ -66,6 +70,7 @@ export default function TimeSheetsAdmin(props) {
        </div>
      )}
     </div>
+    }
     </>
   )
 }

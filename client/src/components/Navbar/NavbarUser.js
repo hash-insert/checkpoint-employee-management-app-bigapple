@@ -46,7 +46,7 @@ export default function NavbarUser() {
             <div className='NavRoutes'>
               <span className={userrole?"showemployees":"showemployee"} >Teams</span>
               <span className={userrole?"showemployees":"showemployee"} onClick={() => navigate("/employees")} >Employees</span>
-              <span onClick={() => navigate("/calendar")} >Timesheeet</span>
+              <span onClick={() =>{userrole?navigate("/calendar"):navigate("/timesheets")}} >Timesheeet</span>
               <span onClick={() =>{userrole?navigate("/leaveadmin"):navigate("/leaveemployee")}}  >Leaves</span>
             </div>
             <div>
@@ -66,7 +66,7 @@ export default function NavbarUser() {
       <div className='NavbarBottom'>
         <BsMicrosoftTeams className={userrole?"showemployees":"showemployee"} />
         <PiUsersThreeFill className={userrole?"showemployees":"showemployee"} onClick={() => navigate("/employees")} />
-        <IoCalendar onClick={() => navigate("/calendar")} />
+        <IoCalendar onClick={() => {userrole?navigate("/calendar"):navigate("/timesheets")}} />
         <LuCalendarX2 />
       </div>
     </>

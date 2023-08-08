@@ -2,29 +2,29 @@ import mongoose from "mongoose";
 
 const TimesheetSchema = mongoose.Schema(
   {
-    userId: {
+    empId: {
       type: String,
-      required: false,
+      required: true,
     },
     empName: {
       type: String,
-      required: false,
+      required: true,
     },
     projectName: {
       type: String,
-      required: false,
+      required: true,
     },
     feature: {
       type: String,
-      required: false,
+      required: true,
     },
     description: {
       type: String,
       required: false,
     },
-    productive: {
+    productiveHrs: {
       type: Number,
-      required: false,
+      required: true,
     },
     screenshots: {
       type:[String],
@@ -34,6 +34,10 @@ const TimesheetSchema = mongoose.Schema(
       type: String,
       default: "pending",
     },
+    date:{
+      type:String,
+      required: true
+    }
   },
   { timestamps: true }
 );

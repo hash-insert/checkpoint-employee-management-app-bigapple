@@ -6,7 +6,7 @@ function PreviousBlocks({setOpenModel ,setObjs}) {
  const [obj,setObj]=useState([]);   
  let id=0;
  useEffect(()=>{
-    axios.get('http://localhost:5000/auth/timesheet')
+    axios.get('http://localhost:9000/auth/timesheet')
     .then((x)=>setObj(x.data))
 },)
 
@@ -17,11 +17,11 @@ function popup(x)
 }
  
   return (
-    <div className='prev'>
+    <div className='previoustimesheets'>
     { 
       
      obj.map((obj)=>{ 
-        return(<div className='block' key={id++} onClick={()=>popup(obj)} >
+        return(<div className='timesheetblock' key={id++} onClick={()=>popup(obj)} >
         <p>{obj.description} </p>
       </div>)})
     }
