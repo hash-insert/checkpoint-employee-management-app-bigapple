@@ -8,10 +8,11 @@
 .leave-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 4px #c9a8f1;
+  /* box-shadow: 0 4px 4px #c9a8f1; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 2%;
   width: 80%;
-  margin-top: 5%;
+  margin: 5%;
 }
 
 .leave-card h2 {

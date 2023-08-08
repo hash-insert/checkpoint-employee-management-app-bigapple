@@ -1,10 +1,9 @@
-
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProfilePage from './pages/profile';
-  import './App.css';
-  import LeavePageAdmin from './components/leavePageAdmin';
-import LeavePageEmp from "./components/leavePageEmp"
+import './App.css';
+import LeavePageAdmin from "./pages/leavePageAdmin";
+ import LeavePageEmployee from "./pages/leavePageEmp"
 import { HomePage } from './pages/HomePage';
 import LargeCalendar from './pages/CalenderPage';
 import { AppProvider } from './AppProvider/Appprovider';
@@ -35,18 +34,32 @@ function App() {
   }, []);
   console.log(userid)
   return (
-      <AppProvider>
-        <Routes >
-          <Route path='/' element={<HomePage />}></Route>
-          <Route path='/Calendar' element={<LargeCalendar />}></Route>
-          <Route path="/profile" element={<ProfilePage />} ></Route>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/timesheetadmin" element={<TimeSheetsAdmin/>}></Route>
-          <Route path="/employees" element={<EmployeePage />}></Route>
-          <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
-          <Route path="/employee/dashboard" element={<EmpDashboard />}/>
-        </Routes>
-      </AppProvider>
+    <AppProvider>
+      <Routes>
+        {isLoggedin && (
+          <>
+            {role === "admin" && (
+              <>
+                <Route path="/employees" element={<EmployeePage />} />
+                <Route path="/profile" element={<ProfilePage value={userid} />} />
+                <Route path='/Calendar' element={<LargeCalendar />} />
+                <Route path="/timesheetadmin" element={<TimeSheetsAdmin />} />
+                <Route path="/leaveadmin" element={<LeavePageAdmin  />} />
+              </>
+            )}
+            {role === "employee" && (
+              <>
+                <Route path="/profile" element={<ProfilePage value={userid} />} />
+                <Route path="/leaveemployee" element={<LeavePageEmployee userId={userid}/>} />
+              </>
+            )}
+          </>
+        )}
+        
+        <Route path="/" element={<HomePage/>}></Route>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
+    </AppProvider>
   );
 }
 export default App;

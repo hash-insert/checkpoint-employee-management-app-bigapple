@@ -11,8 +11,8 @@ import {
 const router = express.Router();
 router.get("/:userId", getEmpLeave);
 router.post("/:userId", postEmpLeave);
-router.put("update/:id", updateEmpLeave);
+router.put("/:id", updateLeave); 
 router.delete("/:id", deleteEmpLeave);
-router.put("/:id", updateLeave);
-router.get("/",getEmpLeavePending)
+router.get("/", getEmpLeavePending);
 export default router;
+

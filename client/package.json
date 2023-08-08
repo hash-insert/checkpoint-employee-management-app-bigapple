@@ -9,7 +9,6 @@
     "@mui/material": "^5.14.2",
     "@fullcalendar/interaction": "^6.1.8",
     "@fullcalendar/timegrid": "^6.1.8",
-    "@mui/material": "^5.14.1",
     "@mui/styled-engine-sc": "^5.12.0",
     "@mui/x-date-pickers": "^6.10.1",
     "@mui/x-date-pickers-pro": "^6.10.1",

@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
-import './leaveCard.css';
+import '../css/leaveadmin.css';
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${year}-${month}-${day}`;
+};
 
 const LeaveCard = ({ leaveData, onUpdateLeaveStatus }) => {
   const [rejectionReason, setRejectionReason] = useState('');
-  const [showRejectionInput, setShowRejectionInput] = useState(false);
-
+  const [showRejectionInput, setShowRejectionInput] = useState({});
+  
   const handleRejectClick = (leaveId) => {
-    if (showRejectionInput) {
+    if (showRejectionInput[leaveId]) {
       if (rejectionReason.trim() !== '') {
         onUpdateLeaveStatus(leaveId, 'Rejected');
       }
-      setShowRejectionInput(false);
+      setShowRejectionInput(prevState => ({ ...prevState, [leaveId]: false }));
       setRejectionReason('');
     } else {
-      setShowRejectionInput(true);
+      setShowRejectionInput(prevState => ({ ...prevState, [leaveId]: true }));
     }
   };
 
@@ -33,10 +41,10 @@ const LeaveCard = ({ leaveData, onUpdateLeaveStatus }) => {
             {leave.userName}{' '}
           </pre>
           <p>Reason: {leave.reason}</p>
-          <p>From Date: {leave.fromDate}</p>
-          <p>To Date: {leave.toDate}</p>
+          <p>From Date: {formatDate(leave.fromDate)}</p>
+          <p>To Date: {formatDate(leave.toDate)}</p>
           <p>Leave Status: {leave.LeaveStatus}</p>
-          {showRejectionInput && (
+          {showRejectionInput[leave._id] && (
             <div className="rejection-input">
               <input
                 type="text"
@@ -47,12 +55,12 @@ const LeaveCard = ({ leaveData, onUpdateLeaveStatus }) => {
             </div>
           )}
           <div className="button-group">
-            {showRejectionInput ? (
+            {showRejectionInput[leave._id] ? (
               <>
                 <button className="confirm-reject-button" onClick={() => handleRejectClick(leave._id)}>
                   Confirm Reject
                 </button>
-                <button className="cancel-reject-button" onClick={handleRejectClick}>
+                <button className="cancel-reject-button" onClick={() => handleRejectClick(leave._id)}>
                   Cancel
                 </button>
               </>

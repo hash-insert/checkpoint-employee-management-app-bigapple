@@ -1,17 +1,18 @@
 
 import React, { useState, useEffect } from "react";
-import LeaveInfoCards from "./leaveInfoCards";
-import "./leaveEmp.css";
+import LeaveInfoCards from "../components/leaveemp";
+import "../css/leavePageEmp.css";
 import axios from "axios";
+import Navbar from "../components/Navbar/NavbarUser"
 
-function LeavePageEmp() {
+function LeavePageEmp({ userId }) {
   const [description, setDescription] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [leaveData, setLeaveData] = useState([]);
-  const userId = "64ad796d4eb2abcfcc4cd41f"; 
-const base_url="http://localhost:9000"
+  const base_url = "http://localhost:9000"
   const fetchEmployeeLeaves = () => {
+ 
     axios
       .get(`${base_url}/empLeave/${userId}`)
       .then((response) => {
@@ -27,6 +28,7 @@ const base_url="http://localhost:9000"
   }, []);
 
   const handleApplyButton = () => {
+    console.log(userId)
     const newLeaveRequest = {
       reason: description,
       fromDate,
@@ -45,6 +47,7 @@ const base_url="http://localhost:9000"
 
   return (
     <div>
+         <Navbar/>
       <div className="leave">
         <div className="leave-card">
           <h2>Apply for Leave</h2>

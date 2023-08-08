@@ -35,7 +35,7 @@ const Form = () => {
       if (role === "admin") {
         navigate("/employees");
       } else {
-        navigate("/employee/dashboard");
+        navigate("/leaveemployee");
       }
      
     });

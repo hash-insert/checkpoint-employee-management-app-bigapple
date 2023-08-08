@@ -18,7 +18,7 @@ const leaveSchema = mongoose.Schema({
     default: "pending",
   },
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     ref: "user",
     required: true,
   },

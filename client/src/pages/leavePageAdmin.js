@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import LeaveCard from './LeaveCard';
-import './leavePageAdmin.css';
+import LeaveCard from '../components/leaveadmin';
+import '../css/leavePageAdmin.css';
+import Navbar from "../components/Navbar/NavbarUser"
 import axios from 'axios';
-
 function LeavePageAdmin() {
   const [leaveData, setLeaveData] = useState([]);
 
@@ -21,11 +21,11 @@ function LeavePageAdmin() {
       });
   };
 
-  const updateLeaveStatus = (leaveId, status) => {
+  const updateLeaveStatus = (id, status) => {
     axios
-      .put(`http://localhost:9000/empLeave/${leaveId}`, { LeaveStatus: status })
+      .put(`http://localhost:9000/empLeave/${id}`, { LeaveStatus: status })
       .then(() => {
-        console.log(`LeaveStatus updated to ${status} for userId ${leaveId}`);
+        console.log(`LeaveStatus updated to ${status} for userId ${id}`);
         fetchPendingLeaves();
       })
       .catch((error) => {
@@ -34,11 +34,14 @@ function LeavePageAdmin() {
   };
 
   return (
+    <>
+      <Navbar/>
     <div className="leave-page-admin">
       <div className="leave-cards-container">
         <LeaveCard leaveData={leaveData} onUpdateLeaveStatus={updateLeaveStatus} />
       </div>
-    </div>
+      </div>
+      </>
   );
 }
 

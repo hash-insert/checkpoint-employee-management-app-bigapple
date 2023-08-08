@@ -11,9 +11,10 @@
 
 .leave-info-card {
   border-radius: 8px;
-  padding: 0.5%;
+  padding: 2%;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-bottom: 2%;
 }
 
 @media (max-width: 600px) {
