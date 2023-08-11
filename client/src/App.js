@@ -45,7 +45,7 @@ function App() {
                 <Route path="/employees" element={<EmployeePage />} />
                 <Route path="/profile" element={<ProfilePage value={userid} />} />
                 <Route path='/Calendar' element={<LargeCalendar value={setTimesheetsData} />} />
-                <Route path="/timesheetadmin" element={<TimeSheetsAdmin value={timesheetsdata} />} />
+                <Route path="/timesheetadmin" element={<TimeSheetsAdmin value={{setTimesheetsData,timesheetsdata}} />} />
                 <Route path="/leaveadmin" element={<LeavePageAdmin  />} />
               </>
             )}
@@ -59,7 +59,7 @@ function App() {
           </>
         )}
         <Route path="/" element={<HomePage/>}></Route>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<Login value={isLoggedin}/>}/>
       </Routes>
     </AppProvider>
   );

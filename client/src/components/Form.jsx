@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,14 +5,12 @@ import jwt_decode from "jwt-decode";
 import "../css/login.css";
 import { useNavigate } from "react-router";
 
-const Form = () => {
+const Form = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const navigate = useNavigate();
-
-
-
+  const isLoginedin = props.value;
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -27,19 +23,24 @@ const Form = () => {
     e.preventDefault();
     axios.post("http://localhost:9000/login", { email, password }).then((res) => {
       const { accessToken } = res.data;
-      setToken(res.data)
-      const decodedToken = jwt_decode(accessToken);
-      const { role , userid,userName } = decodedToken;
-      console.log(role,userid,userName)
-      localStorage.setItem("Token",JSON.stringify(accessToken));
-      if (role === "admin") {
-        navigate("/employees");
-      } else {
-        navigate("/timesheets");
-      }
-     
+      setToken(accessToken)
     });
   };
+  console.log(token)
+  useEffect(() => {
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      const { role } = decodedToken;
+      localStorage.setItem("Token", JSON.stringify(token));
+      if (role === "admin") {
+        navigate("/employees");
+        window.location.reload(false);
+      } else {
+        navigate("/timesheets");
+        window.location.reload(false);
+      }
+    }
+  }, [isLoginedin,token]);
   
 
   return (

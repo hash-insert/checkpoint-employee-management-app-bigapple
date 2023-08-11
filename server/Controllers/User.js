@@ -126,7 +126,6 @@ export const loginUser = async (req, res) => {
     const accessToken = user.accessToken;
     // const idTokenResult = await admin.auth().verifyIdToken(user.accessToken);
     //const role=idTokenResult.role
-
     res.json({ success: true, accessToken });
   } catch (error) {
     res.json({ success: false, message: "Error occurred while logging in" });

@@ -104,7 +104,8 @@ export const updateTimeSheet = async (req, res) => {
       { _id: id },
       { status: status }
     );
-    if (updateTimeSheet.modifiedCount === 1) {
+    console.log(updateTimeSheet);
+    if (await updateTimeSheet.modifiedCount === 1) {
       res.status(200).json("Updated Successfully");
     } else {
       res.status(500).json("Error while saving");
@@ -115,7 +116,7 @@ export const updateTimeSheet = async (req, res) => {
 };
 export const allAcceptedTimesheets = async (req, res) => {
   try {
-    const allAccepted = await TimeSheet.find({ status: "accepted" });
+    const allAccepted = await TimeSheet.find({ status: "Approved" });
     res.status(200).json(allAccepted);
   } catch (err) {
     res
@@ -125,7 +126,7 @@ export const allAcceptedTimesheets = async (req, res) => {
 };
 export const allRejectedTimeSheets = async (req, res) => {
   try {
-    const allRejected = await TimeSheet.find({ status: "rejected" });
+    const allRejected = await TimeSheet.find({ status: "Rejected" });
     res.status(200).json(allRejected);
   } catch (err) {
     res

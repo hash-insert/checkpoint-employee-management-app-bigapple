@@ -7,6 +7,7 @@ import { MdAccountCircle } from 'react-icons/md';
 import { PiUsersThreeFill } from 'react-icons/pi';
 import { useNavigate } from 'react-router';
 import jwt_decode from "jwt-decode";
+import { NavLink } from 'react-router-dom';
 
 export default function NavbarUser() {
   const [dropdown,setDropdown] = useState(false);
@@ -45,9 +46,9 @@ export default function NavbarUser() {
           <div className='rightroutes'>
             <div className='NavRoutes'>
               <span className={userrole?"showemployees":"showemployee"} >Teams</span>
-              <span className={userrole?"showemployees":"showemployee"} onClick={() => navigate("/employees")} >Employees</span>
-              <span onClick={() =>{userrole?navigate("/calendar"):navigate("/timesheets")}} >Timesheeet</span>
-              <span onClick={() =>{userrole?navigate("/leaveadmin"):navigate("/leaveemployee")}}  >Leaves</span>
+              <NavLink className={userrole?"showemployees":"showemployee"} to="/employees" >Employees</NavLink>
+              <NavLink to={userrole?'/calendar':"/timesheets"} >Timesheeet</NavLink>
+              <NavLink to={userrole?"/leaveadmin":"/leaveemployee"}  >Leaves</NavLink>
             </div>
             <div>
             <MdAccountCircle onClick={()=>setDropdown(!dropdown)} className='ProfileLogo' />
