@@ -62,7 +62,7 @@
   } */
 
 .previoustimesheets{
-    margin-top: 50px;
+    margin-top: 2%;
 }
 
 .timesheetblock{
@@ -71,7 +71,6 @@
     background-color: rgb(190, 49, 190);
     border: 1px solid #000;
     width: 87vw;
-    height: 15vw;
     padding-left: 10px;
     padding-right: 10px;
     
@@ -81,22 +80,19 @@
   background-color: white;
   border-radius: 5px;
   padding-left: 2px;
-  height: 12vw;
   margin-bottom: 10px;
 }
-.timesheetHrs
+/* .timesheetHrs
 {
   margin-bottom: 5px;
   margin-left: 77vw;
   color: white;
-}
+} */
 .timesheetdetails 
 {
    display: flex;
-   
 }
-.timesheetsheader 
-{
+.timesheetsheader {
   display: flex;
   justify-content: space-between;
   color: white;

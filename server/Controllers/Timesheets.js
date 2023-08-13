@@ -3,7 +3,7 @@ import TimeSheet from "../Models/Timesheets.js";
 export const getTimesheets=async(req,res,next)=>{
   try{
   const id=req.params.id;
-  const time=await TimeSheet.findById({userId:id});
+  const time = await TimeSheet.find({empId:id});
   res.send(time);
   }
   catch(err)

@@ -83,6 +83,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    position: absolute;
 }
 .dropdown-main1{
     display: none;

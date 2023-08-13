@@ -4,11 +4,12 @@ import './Timesheet.css'
 import PreviousBlocks from './PreviousBlocks';
 import axios  from 'axios';
 function TimeForm({setOpenModel,setObjs ,userId,userName}) {
+    const [projectName,setProjectName] = useState("");
     const [feature,setFeature]=useState();
     const [image,setImage]=useState([]);
     const [description,setDescription]=useState('');
-    const [Status,setStatus]=useState('');
     const [time,setTime]=useState();
+    const userid = userId;
     console.log(userId,userName)
     function add()
     {
@@ -17,13 +18,12 @@ function TimeForm({setOpenModel,setObjs ,userId,userName}) {
       
       axios.post('http://localhost:9000/auth/timesheet',
       {
-      empId:userId,  
+      empId:userid,  
       empName:userName,
-      projectName:"Employee management app",
+      projectName:projectName,
       feature:feature,
       description:description,
       productiveHrs:time,
-      status:Status,
       screenshots:image,
       date: date
       }
@@ -47,6 +47,9 @@ function TimeForm({setOpenModel,setObjs ,userId,userName}) {
        <div className='timesheetform'>
         <h1 className='textheading'>Time sheet</h1>
         
+        <label className='timesheetslabel' >Project</label>
+        <br></br>
+        <input className='timesheetinputs' type='text' onChange={(e)=>setProjectName(e.target.value)}></input>
         <label className='timesheetslabel' >Feature</label>
         <br></br>
         <input className='timesheetinputs' type='text' onChange={(e)=>setFeature(e.target.value)}></input>
@@ -59,16 +62,12 @@ function TimeForm({setOpenModel,setObjs ,userId,userName}) {
         <br></br>
         <input className='timesheetinputs' type='Number' onChange={(e)=>setTime(e.target.value)}></input>
         <br></br>
+        <label  className='timesheetslabel' >Screenshots:-  &nbsp; &nbsp;</label>
         <input  accept='image/*' type='file' onChange={convert} />
         <br></br>
-        <label className='timesheetslabel' >Status</label>
-        <br></br>
-        <input className='timesheetinputs' type='text' onChange={(e)=>setStatus(e.target.value)}></input>
         <button className='timesheetbutton' onClick={()=>add()}>submit</button>
        </div>
-       
-       
-       <PreviousBlocks setOpenModel={setOpenModel} setObjs={setObjs}/>
+       <PreviousBlocks userid={userid} setOpenModel={setOpenModel} setObjs={setObjs}/>
       </div>
     );
 }

@@ -75,11 +75,14 @@
 }
 .screenshotback{
     position: relative;
-    min-width:70%;
-    min-height: 65%;
+    width:75%;
+    height: 70%;
     background-color: white;
     z-index: 110;
     border-radius: 10px;
+}
+.screenshotimg{
+    object-fit: contain;
 }
 @media screen and (max-width:850px){
     .timesheetmain{
