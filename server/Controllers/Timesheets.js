@@ -26,23 +26,26 @@ export const getallTimesheets=async(req,res,next)=>{
 export const addTimesheets=async(req,res,next)=>{
   
   try{
-     const userId=req.body.userId;
+     const empId=req.body.empId;
      const empName=req.body.empName;
+     const projectName=req.body.projectName;
      const feature= req.body.feature;
      const description=req.body.description;
-     const productive=req.body.productive;
+     const productive=req.body.productiveHrs;
      const screenshots=req.body.screenshots;
      const status=req.body.status;
-     console.log(screenshots)
+     const date=req.body.date
+     console.log(req.body)
      const time=await TimeSheet.create({
-      userId:userId,
+      empId:empId,
       empName:empName,
+      projectName: projectName,
       feature:feature,
       description:description,
-      productive:productive,
+      productiveHrs:productive,
       screenshots:screenshots,
-      status:status
-      
+      status:status,
+      date:date
      })
 
      res.status(200).send(req.body);

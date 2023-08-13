@@ -1,6 +1,6 @@
 .textheading{
     padding-left: 170px;
-    font-weight: 5px;
+    font-weight: bold;
   }
 .TimesheetEmployee {
     align-items: center;
@@ -26,7 +26,9 @@
     height: 30px;
     margin-bottom: 10px;
     margin-top: 10px;
+    border: 1px solid #000;
     border-radius: 5px;
+    
   }
   
 .timesheetbutton {
@@ -64,10 +66,38 @@
 }
 
 .timesheetblock{
-    margin-top: 10px;
+    margin-top: 1vw;
     margin-left: 100px;
-    border-style: solid;
-    border-color:grey;
+    background-color: rgb(190, 49, 190);
+    border: 1px solid #000;
     width: 87vw;
-    height: 70px;
+    height: 15vw;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+.innerblock 
+{
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 2px;
+  height: 12vw;
+  margin-bottom: 10px;
+}
+.timesheetHrs
+{
+  margin-bottom: 5px;
+  margin-left: 77vw;
+  color: white;
+}
+.timesheetdetails 
+{
+   display: flex;
+   
+}
+.timesheetsheader 
+{
+  display: flex;
+  justify-content: space-between;
+  color: white;
 }

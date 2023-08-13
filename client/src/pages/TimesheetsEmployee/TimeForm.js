@@ -3,24 +3,29 @@ import { useState } from 'react';
 import './Timesheet.css'
 import PreviousBlocks from './PreviousBlocks';
 import axios  from 'axios';
-function TimeForm({setOpenModel,setObjs}) {
+function TimeForm({setOpenModel,setObjs ,userId,userName}) {
     const [feature,setFeature]=useState();
     const [image,setImage]=useState([]);
     const [description,setDescription]=useState('');
     const [Status,setStatus]=useState('');
     const [time,setTime]=useState();
-  
+    console.log(userId,userName)
     function add()
     {
-      console.log('image')
-
+      const currentDate = new Date();
+      const date=currentDate.toISOString().split('T')[0];
+      
       axios.post('http://localhost:9000/auth/timesheet',
       {
+      empId:userId,  
+      empName:userName,
+      projectName:"Employee management app",
       feature:feature,
       description:description,
-      time:time,
-      Status:Status,
-      screenshots:image
+      productiveHrs:time,
+      status:Status,
+      screenshots:image,
+      date: date
       }
 
       )
@@ -54,7 +59,7 @@ function TimeForm({setOpenModel,setObjs}) {
         <br></br>
         <input className='timesheetinputs' type='Number' onChange={(e)=>setTime(e.target.value)}></input>
         <br></br>
-        <input className='timesheetinputs' accept='image/*' type='file' onChange={convert} />
+        <input  accept='image/*' type='file' onChange={convert} />
         <br></br>
         <label className='timesheetslabel' >Status</label>
         <br></br>

@@ -4,19 +4,19 @@ const TimesheetSchema = mongoose.Schema(
   {
     empId: {
       type: String,
-      required: true,
+      required: false,
     },
     empName: {
       type: String,
-      required: true,
+      required: false,
     },
     projectName: {
       type: String,
-      required: true,
+      required: false,
     },
     feature: {
       type: String,
-      required: true,
+      required: false,
     },
     description: {
       type: String,
@@ -36,7 +36,7 @@ const TimesheetSchema = mongoose.Schema(
     },
     date:{
       type:String,
-      required: true
+      required: false
     }
   },
   { timestamps: true }

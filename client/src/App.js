@@ -15,6 +15,7 @@ import jwt_decode from "jwt-decode";
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [role, setRole] = useState("");
+  const [userName,setUserName]=useState("")
   const [userid, setUserId] = useState("");
   const [timesheetsdata,setTimesheetsData] = useState("");
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function App() {
       const decodedToken = jwt_decode(usertoken);
       setRole(decodedToken.role);
       setUserId(decodedToken.userid);
+      setUserName(decodedToken.userName);
       setIsLoggedin(true);
       console.log(decodedToken);
     } else {
@@ -52,7 +54,7 @@ function App() {
             {role === "employee" && (
               <>
                 <Route path="/profile" element={<ProfilePage value={userid} />} />
-                <Route path="/timesheets" element={<Timesheets/>}/>
+                <Route path="/timesheets" element={<Timesheets userId={userid} userName= {userName}/>}/>
                 <Route path="/leaveemployee" element={<LeavePageEmployee userId={userid}/>} />
               </>
             )}
