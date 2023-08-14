@@ -1,72 +1,51 @@
 import { useState } from "react";
-
-
-
-// import React from 'react';
-
-// const TeamMember = ({ name, role, photoUrl, description }) => {
-//   return (
-//     <div className="team-member">
-//       <img src={photoUrl} alt={name} />
-//       <h2>{name}</h2>
-//       <h3>{role}</h3>
-//       <p>{description}</p>
-//     </div>
-//   );
-// };
-
-// export default TeamMember;
-
+import "./team-member.css";
 
 function TeamMembers(props) {
-
-  
   const [employees, setEmployees] = useState([]);
-  const[addEmp,setAddEmp]=useState("")
-
+  const [addEmp, setAddEmp] = useState("");
+  const[teamName,setTeamName]=useState("")
 
   const handleAddEmp = () => {
     setEmployees([...employees, addEmp]);
-  
   };
   const removeEmp = (index) => {
     const remove = employees.filter((ele, i) => i !== index);
     setEmployees(remove);
   };
 
-
   return (
-    <>
-  <div className="card">
-              <h1>Team</h1>
-              <h2>Project Name</h2>
-              <h2>Team Lead</h2>
-              <ul className="emp">
-                {employees.map((name, i) => {
-                  return (
-                    <li key={i}>
-                      {name}
-                      <button onClick={() => removeEmp(i)}>remove</button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="Empbtn">
-              <input
-                value={addEmp}
-                onChange={(e) => {
-                  setAddEmp(e.target.value);
-                }}
-              />
-              <button onClick={handleAddEmp}>AddEmp</button>
-            </div>
-        
-        
-    </>
-  )
-   
-              }
-
+    <div className="card-container">
+      <div className="team-card">
+        <h1>{props.team}</h1>
+        <div className="proj-lead">
+          <h2>Project Name</h2>
+          <h2>Team Lead</h2>
+        </div>
+        <ul className="emp">
+          {employees.map((name, i) => {
+            return (
+              <li key={i}>
+                {name}
+                <button className="x-btn" onClick={() => removeEmp(i)}>
+                  X
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div className="Empbtn">
+        <input
+          value={addEmp}
+          onChange={(e) => {
+            setAddEmp(e.target.value);
+          }}
+        />
+        <button onClick={handleAddEmp}>AddEmp</button>
+      </div>
+    </div>
+  );
+}
 
 export default TeamMembers;

@@ -1,15 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
 import "./team.css";
 import { useState } from "react";
 import Card from "./card";
 import AddTeamModal from "./addteamModal";
-import TeamMembers from "./team-members";
 
 function TeamPage() {
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
-
-  const [addEmp, setAddEmp] = useState("");
 
   const data = [
     {
@@ -34,23 +29,18 @@ function TeamPage() {
     },
   ];
   const [team, setTeams] = useState(data);
-
+  const [teamName, setTeamName] = useState("");
   const [search, setSearch] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [selectedTeam, setSelectedTeam] = useState(""); 
 
   const handleSearch = (e) => {
     let value = e.target.value;
-
     setSearch(value);
   };
 
-  const handleEmp = (teamName) => {
-    setToggle(true);
-    setSelectedTeam(teamName);
+  const handleEmp = (click) => {
+   console.log(click)
+  
   };
-
-  const filteredteams = team.filter((item) => item.Team.indexOf(search) > -1);
 
   const addTeam = (newTeam) => {
     setTeams([...team, newTeam]);
@@ -63,60 +53,46 @@ function TeamPage() {
   const closeModal = () => {
     setShowModal(false);
   };
+  const filteredteams = team.filter((item) => item.Team.indexOf(search) > -1);
 
   return (
     <>
       <div className="whole-page">
-        <div className="left-half">
-          <div className="searchbox">
-            <input
-              className="search-input"
-              value={search}
-              onChange={handleSearch}
-              placeholder="Search Teams"
-            />
-
-            <button className="team-btn" onClick={openModal}>
-              Add a Team
-            </button>
-          </div>
-          <div className="container">
-            {filteredteams.length > 0 ? (
-              filteredteams.map((data, i) => {
-                return (
-                  <Card
-                    key={i}
-                    name={data.Team}
-                    desc={data.desc}
-                    onClick={()=>handleEmp(data.Team)}
-                  />
-                );
-              })
-            ) : (
-              <div>
-                <p>No results found</p>{" "}
-              </div>
-            )}
-          </div>
-          <AddTeamModal
-            showModal={showModal}
-            closeModal={closeModal}
-            addTeam={addTeam}
+        <div className="searchbox">
+          <input
+            className="search-input"
+            value={search}
+            onChange={handleSearch}
+            placeholder="Search Teams"
           />
-        </div>
 
-        {!toggle ? (
-          <div className="flipside">
-            <img
-              className="team-pic"
-              src="https://w0.peakpx.com/wallpaper/802/222/HD-wallpaper-success-quotes-lucky-mantra-network-marketing-quote-sayings.jpg"
-            />
-          </div>
-        ) : (
-          <div className="right-half">
-            <TeamMembers />
-          </div>
-        )}
+          <button className="team-btn" onClick={openModal}>
+            Add a Team
+          </button>
+        </div>
+        <div className="container">
+          {filteredteams.length > 0 ? (
+            filteredteams.map((data, i) => {
+              return (
+                <Card
+                  key={i}
+                  name={data.Team}
+                  desc={data.desc}
+                  onClick={() => handleEmp(data)}
+                />
+              );
+            })
+          ) : (
+            <div>
+              <p>No results found</p>
+            </div>
+          )}
+        </div>
+        <AddTeamModal
+          showModal={showModal}
+          closeModal={closeModal}
+          addTeam={addTeam}
+        />
       </div>
     </>
   );
