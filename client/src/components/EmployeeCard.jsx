@@ -16,8 +16,8 @@ const EmployeeCard = ({ setEmployeeCard, setBackdrop }) => {
     <div className="employee-card">
       <Card
         direction={{ base: "column", md: "column", sm: "row" }}
-        overflow="hidden"
         variant="outline"
+        id="emp-card"
         key={employee.empId}
         style={{ backgroundColor: "rgba(228, 228, 228, 0.699)" }}
       >
@@ -28,12 +28,15 @@ const EmployeeCard = ({ setEmployeeCard, setBackdrop }) => {
           <Image
             objectFit="cover"
             maxW={{ base: "100%", sm: "200px", md: "200px" }}
-            src={employee.profileImg}
+            src={
+              employee.profileImg ??
+              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            }
             alt="profile images"
             style={{
               borderRadius: "100%",
-              width: "180px",
-              height: "180px",
+              width: "100px",
+              height: "100px",
             }}
           />
           <div className="empname">
@@ -49,7 +52,7 @@ const EmployeeCard = ({ setEmployeeCard, setBackdrop }) => {
                 </Text>
               </GridItem>
               <GridItem w="100%" h="100%">
-                <Text py="1">{employee.empId}</Text>
+                <Text py="1">{employee.userId}</Text>
               </GridItem>
               <GridItem w="100%" h="100%">
                 <Text py="1">
@@ -74,6 +77,30 @@ const EmployeeCard = ({ setEmployeeCard, setBackdrop }) => {
               </GridItem>
               <GridItem w="100%" h="100%">
                 <Text py="1">{employee.teamname}</Text>
+              </GridItem>
+              <GridItem w="100%" h="100%">
+                <Text py="1">
+                  <strong>NO OF LEAVES: </strong>
+                </Text>
+              </GridItem>
+              <GridItem w="100%" h="100%">
+                <Text py="1">{employee.noOfLeaves}</Text>
+              </GridItem>
+              <GridItem w="100%" h="100%">
+                <Text py="1">
+                  <strong>PHONE NO: </strong>
+                </Text>
+              </GridItem>
+              <GridItem w="100%" h="100%">
+                <Text py="1">{employee.phone}</Text>
+              </GridItem>
+              <GridItem w="100%" h="100%">
+                <Text py="1">
+                  <strong>EMAIL: </strong>
+                </Text>
+              </GridItem>
+              <GridItem w="100%" h="100%">
+                <Text py="1">{employee.email}</Text>
               </GridItem>
             </Grid>
           </CardBody>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card, CardBody, Grid, GridItem } from "@chakra-ui/react";
 import { Image, Stack, Heading, Text } from "@chakra-ui/react";
 import "../css/employeecard.css";
@@ -8,46 +8,10 @@ import Backdrop from "./Backdrop";
 import { FiSearch } from "react-icons/fi";
 import { IoMdPersonAdd } from "react-icons/io";
 import Adduser from "./Adduser";
+import { getAllUsers } from "../Integration/EmployeeList.js";
 
 const EmployeesCard = () => {
-  const [empDetails, setEmpDetails] = useState([
-    {
-      empId: "Hash310",
-      name: "John",
-      designation: "Software engineer",
-      DOB: "23/08/1990",
-      teamname: "BigApple",
-      profileImg:
-        "https://media.istockphoto.com/id/1355110818/photo/studio-shot-of-a-handsome-and-happy-young-man-posing-against-a-grey-background.jpg?s=612x612&w=0&k=20&c=T39jUOOjC8H-Op0cfd-uiNXk1a2XBn1sXkQbKIWwY7E=",
-    },
-    {
-      empId: "Hash3180",
-      name: "Landa",
-      designation: "Software engineer",
-      DOB: "23/08/1990",
-      teamname: "BigApple",
-      profileImg:
-        "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?cs=srgb&dl=pexels-emmy-e-2381069.jpg&fm=jpg",
-    },
-    {
-      empId: "Hash315",
-      name: " Wick",
-      designation: "Software engineer",
-      DOB: "23/08/1990",
-      teamname: "BigApple",
-      profileImg:
-        "https://media.istockphoto.com/id/1132793417/photo/positivity-produces-success.jpg?s=612x612&w=0&k=20&c=Vak0Cam-GSVP0AnadPtC3yb_1K1O_IaLAgcwaoOg0HQ=",
-    },
-    {
-      empId: "Hash320",
-      name: "Alesa",
-      designation: "Software engineer",
-      DOB: "23/08/1990",
-      teamname: "BigApple",
-      profileImg:
-        "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?cs=srgb&dl=pexels-emmy-e-2381069.jpg&fm=jpg",
-    },
-  ]);
+  const [empDetails, setEmpDetails] = useState([]);
   const { setEmployee } = useContext(EmployeeContext);
   const [backdrop, setBackdrop] = useState(false);
   const [employeeCard, setEmployeeCard] = useState(false);
@@ -59,7 +23,7 @@ const EmployeesCard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredEmpDetails, setFilteredEmpDetails] = useState(empDetails);
   const [addUserBackDrop, setAddUserBackDrop] = useState(false);
-  const [addUserForm,setAddUserForm]= useState(false);
+  const [addUserForm, setAddUserForm] = useState(false);
   const handleSearch = (term) => {
     setSearchTerm(term);
     const filteredWithName = empDetails.filter((item) =>
@@ -76,6 +40,13 @@ const EmployeesCard = () => {
     setAddUserBackDrop(true);
     setAddUserForm(true);
   };
+  useEffect(() => {
+    (async function () {
+      const userData = await getAllUsers();
+      setEmpDetails(userData.data);
+    })();
+  }, []);
+  console.log(empDetails);
   return (
     <>
       <div className="employees-container">
@@ -104,28 +75,33 @@ const EmployeesCard = () => {
             }}
             gap={6}
           >
-            {filteredEmpDetails.map((item) => (
+            {empDetails.map((item) => (
               <Card
                 direction={{ base: "column", md: "column", sm: "row" }}
                 overflow="hidden"
                 variant="outline"
-                key={item.empId}
+                key={item.userId}
                 id="empcard"
                 style={{ backgroundColor: "rgba(228, 228, 228, 0.699)" }}
                 onClick={() => handleClick(item)}
               >
-                <div className="profile-image">
+                <div className="profile-image"  id="list-images">
                   <Image
                     objectFit="cover"
                     maxW={{ base: "100%", sm: "200px", md: "200px" }}
-                    src={item.profileImg}
+                    src={
+                      item.profileImg ??
+                      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    }
                     alt="profile images"
                     style={{
                       borderRadius: "100%",
                       width: "180px",
                       height: "180px",
                     }}
+                   
                   />
+
                   <div className="empname">
                     <Heading size="lg">{item.name}</Heading>{" "}
                   </div>
@@ -140,7 +116,7 @@ const EmployeesCard = () => {
                         </Text>
                       </GridItem>
                       <GridItem w="100%" h="100%">
-                        <Text py="1">{item.empId}</Text>
+                        <Text py="1">{item.userId}</Text>
                       </GridItem>
                       <GridItem w="100%" h="100%">
                         <Text py="1">
@@ -194,7 +170,12 @@ const EmployeesCard = () => {
               setAddUserForm={setAddUserForm}
             />
           )}
-          {addUserForm && <Adduser setAddUserBackDrop={setAddUserBackDrop} setAddUserForm={setAddUserForm} />}
+          {addUserForm && (
+            <Adduser
+              setAddUserBackDrop={setAddUserBackDrop}
+              setAddUserForm={setAddUserForm}
+            />
+          )}
         </div>
       </div>
     </>
