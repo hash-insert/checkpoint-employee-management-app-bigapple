@@ -1,0 +1,61 @@
+#teamName,
+#teamLead,
+#projectName {
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: 1px solid #9d72b3;
+}
+#aboutProject {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
+  min-height: 10vh;
+  outline: 1px solid #9d72b3;
+}
+#aboutProject:focus {
+  outline: 2px solid #5a2675;
+}
+.submit-btns {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+#submit-icon {
+  margin-right: 10px;
+  background-color: #a8e890;
+}
+#submit-icon:hover {
+  background-color: #42855b;
+  color: white;
+}
+#cancelicon {
+  background-color: #fa7070;
+  color: white;
+}
+#cancelicon:hover {
+  background-color: #e64848;
+}
+.addteam-card {
+  position: absolute;
+  max-height: fit-content;
+  width: fit-content;
+  top: 20%;
+  left: calc(47% - 15rem);
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+  padding: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#team-card{
+  height: fit-content;
+}
+.add-team-err{
+  color: #e64848;
+  font-weight: 500;
+  text-align: center;
+}
+.teamlead-err{
+  color: #e64848;
+  font-weight: 500;
+  font-size: small;
+}

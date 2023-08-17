@@ -12,6 +12,8 @@ import TimeSheetsAdmin from './pages/TimeSheetsAdmin.js';
 import Timesheets from "./pages/TimesheetsEmployee/Timesheets";
 import EmployeePage from './pages/employees.jsx';
 import jwt_decode from "jwt-decode";
+import Teams from "./pages/Teams";
+
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [role, setRole] = useState("");
@@ -49,6 +51,7 @@ function App() {
                 <Route path='/Calendar' element={<LargeCalendar value={setTimesheetsData} />} />
                 <Route path="/timesheetadmin" element={<TimeSheetsAdmin value={{setTimesheetsData,timesheetsdata}} />} />
                 <Route path="/leaveadmin" element={<LeavePageAdmin  />} />
+                <Route path="/admin/teams" element={<Teams />} />
               </>
             )}
             {role === "employee" && (

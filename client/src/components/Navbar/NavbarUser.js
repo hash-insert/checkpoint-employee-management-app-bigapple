@@ -45,7 +45,7 @@ export default function NavbarUser() {
           <div style={{ padding: "1%", color: "white" }}>{getTimePeriod() + "  " + user}!</div>
           <div className='rightroutes'>
             <div className='NavRoutes'>
-              <span className={userrole?"showemployees":"showemployee"} >Teams</span>
+              <NavLink className={userrole?"showemployees":"showemployee"} to="/admin/teams" >Teams</NavLink>
               <NavLink className={userrole?"showemployees":"showemployee"} to="/employees" >Employees</NavLink>
               <NavLink to={userrole?'/calendar':"/timesheets"} >Timesheeet</NavLink>
               <NavLink to={userrole?"/leaveadmin":"/leaveemployee"}  >Leaves</NavLink>
