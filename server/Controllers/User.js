@@ -21,7 +21,7 @@ export const addUser = async (req, res) => {
   try {
     const {
       userid,
-      userName,
+      username,
       role,
       designation,
       email,
@@ -31,14 +31,14 @@ export const addUser = async (req, res) => {
       profileImg,
       noOfLeaves,
     } = req.body;
-   
+    console.log(req.body);
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      await admin.auth().setCustomUserClaims(userCredential.user.uid, { role , userid , userName});
+      await admin.auth().setCustomUserClaims(userCredential.user.uid, { role , userid , username});
  
 
     let saltRounds = 5;
@@ -46,7 +46,7 @@ export const addUser = async (req, res) => {
     let hashedPassword = await bcrypt.hash(password, salt);
     let newObj = {
       userId: userid,
-      userName: userName,
+      userName: username,
       role: role,
       designation: designation,
       email: email,
