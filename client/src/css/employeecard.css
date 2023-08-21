@@ -88,7 +88,7 @@
 }
 .search:focus {
   transition: 0.3s ease;
-  outline: 1px solid purple;
+  border: 1px solid purple;
 }
 #empcard:hover {
   cursor: pointer;
